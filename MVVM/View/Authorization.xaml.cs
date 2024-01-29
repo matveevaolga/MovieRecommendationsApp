@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using MovieRecommendationsApp.MVVM.View;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,11 +15,19 @@ namespace MovieRecommendationsApp
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Authorization : Window
     {
-        public MainWindow()
+        public Authorization()
         {
             InitializeComponent();
+        }
+
+        private void OpenRegistrationWindow(object sender, RoutedEventArgs e)
+        {
+            Registration regWindow = new Registration();
+            regWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            regWindow.Show();
+            this.Close();
         }
     }
 }
