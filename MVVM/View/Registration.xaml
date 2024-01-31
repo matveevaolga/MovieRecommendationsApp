@@ -17,11 +17,11 @@
                          UpdateSourceTrigger=PropertyChanged}" TextChanged="ResetTextBox"/>
                 <TextBox Style="{StaticResource TextBoxWithHint}" 
                          x:Name="passwordTextBox"
-                         materialDesign:HintAssist.Hint="{Binding LoginHint,
+                         materialDesign:HintAssist.Hint="{Binding PasswordHint,
                     UpdateSourceTrigger=PropertyChanged}" TextChanged="ResetTextBox"/>
                 <TextBox Style="{StaticResource TextBoxWithHint}" 
                          x:Name="emailTextBox"
-                         materialDesign:HintAssist.Hint="{Binding LoginHint,
+                         materialDesign:HintAssist.Hint="{Binding EmailHint,
                     UpdateSourceTrigger=PropertyChanged}" TextChanged="ResetTextBox"/>
                 <Grid Margin="0 20 0 0">
                     <Grid.ColumnDefinitions>
