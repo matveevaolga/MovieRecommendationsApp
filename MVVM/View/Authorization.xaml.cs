@@ -60,7 +60,7 @@ namespace MovieRecommendationsApp
                 { LoginHint = "Пользователя под введенным логином не существует"; return; }
             if (!DBHelpFunctional.PasswordCorrect(login, password)) 
                 { PasswordHint = "Введен неверный пароль"; return; }
-            OpenMainWindow();
+            OpenMainWindow(login);
         }
 
         private void ResetTextBox(object sender, TextChangedEventArgs e)
@@ -87,9 +87,9 @@ namespace MovieRecommendationsApp
             this.Close();
         }
 
-        private void OpenMainWindow()
+        private void OpenMainWindow(string login)
         {
-            MainWindow mainWindow = new MainWindow();
+            MainWindow mainWindow = new MainWindow(login);
             mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             mainWindow.Show();
             this.Close();

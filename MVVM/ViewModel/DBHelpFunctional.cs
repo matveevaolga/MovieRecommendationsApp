@@ -33,5 +33,15 @@ namespace MovieRecommendationsApp.MVVM.ViewModel
             catch (Exception ex) 
                 { Console.WriteLine(ex.GetType().Name); dBFunctions.DeleteProflile(profileId); }
         }
+
+        public static void UpdateDaysOnline(string login)
+        {
+            DBFunctions dBFunctions = new DBFunctions();
+            DateTime? lastDateTime = dBFunctions.GetLastDayOnline(login);
+            if (lastDateTime == null) return;
+            DateTime lastDate = (DateTime)lastDateTime;
+            if (lastDate.Date != DateTime.Now.Date) 
+                dBFunctions.UpdateDaysOnline(login);
+        }
     }
 }

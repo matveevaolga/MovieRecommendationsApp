@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.Win32;
+using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -86,6 +88,34 @@ namespace MovieRecommendationsApp.MVVM.Model
             register.Parameters.AddWithValue("@uProfileId", profileId);
             register.ExecuteNonQuery();
             connectorToDb.CloseConnection();
+        }
+
+        public void UpdateDaysOnline(string login)
+        {
+            connectorToDb.OpenConnection();
+            string command = "update profiles inner join users on " +
+                            "users.idProfile = profiles.idProfile " +
+                            "set profiles.onlineDays = profiles.onlineDays + 1 " +
+                            "where users.login = @uLogin;";
+            MySqlCommand updateDays = new MySqlCommand
+                (command, connectorToDb.GetConnection());
+            updateDays.Parameters.AddWithValue("@uLogin", login);
+            updateDays.ExecuteNonQuery();
+            connectorToDb.CloseConnection();
+        }
+
+        public DateTime? GetLastDayOnline(string login)
+        {
+            connectorToDb.OpenConnection();
+            string command = "select lastDayOnline from profiles inner join users on " +
+                            "users.idProfile = profiles.idProfile " +
+                            "where users.login = @uLogin limit 1;";
+            MySqlCommand getLastDay = new MySqlCommand
+                (command, connectorToDb.GetConnection());
+            getLastDay.Parameters.AddWithValue("@uLogin", login);
+            DateTime? lastDay = getLastDay.ExecuteScalar() as DateTime?;
+            connectorToDb.CloseConnection();
+            return lastDay;
         }
     }
 }

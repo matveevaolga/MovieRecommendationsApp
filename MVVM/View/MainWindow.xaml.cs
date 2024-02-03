@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MovieRecommendationsApp.MVVM.Model;
+using MovieRecommendationsApp.MVVM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,16 @@ namespace MovieRecommendationsApp.MVVM.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        string Login { get; }
+        public MainWindow(string login)
         {
             InitializeComponent();
+            Login = login;
+        }
+
+        private void NewLogInProcessing(object sender, RoutedEventArgs e)
+        {
+            DBHelpFunctional.UpdateDaysOnline(Login);
         }
     }
 }
