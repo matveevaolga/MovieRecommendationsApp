@@ -1,4 +1,5 @@
-﻿using MovieRecommendationsApp.MVVM.View;
+﻿using MovieRecommendationsApp.MVVM.Model;
+using MovieRecommendationsApp.MVVM.View;
 using MovieRecommendationsApp.MVVM.ViewModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
