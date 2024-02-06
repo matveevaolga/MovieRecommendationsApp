@@ -42,8 +42,8 @@ namespace MovieRecommendationsApp
             DataContext = this;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null) =>
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         private void LogIn(object sender, RoutedEventArgs e)
@@ -92,6 +92,14 @@ namespace MovieRecommendationsApp
             MainWindow mainWindow = new MainWindow(login);
             mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             mainWindow.Show();
+            this.Close();
+        }
+
+        private void OpenRestorePasswordWindow(object sender, RoutedEventArgs e)
+        {
+            RestorePassword restorePassword = new RestorePassword();
+            restorePassword.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            restorePassword.Show();
             this.Close();
         }
     }
