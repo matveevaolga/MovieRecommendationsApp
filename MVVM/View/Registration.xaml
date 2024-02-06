@@ -9,7 +9,7 @@
         Title="Authorization" Height="900" Width="1500">
     <Grid Background="#4F4557">
         <Border Style="{StaticResource MainBorder}">
-            <StackPanel Margin="20 100 20 20">
+            <StackPanel VerticalAlignment="Center" Margin="20 0 20 0">
                 <Label Content="Регистрация" Style="{StaticResource TitleLabel}"/>
                 <TextBox Style="{StaticResource TextBoxWithHint}"
                          x:Name="loginTextBox" 
