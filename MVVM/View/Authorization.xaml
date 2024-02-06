@@ -29,7 +29,7 @@
                     <Button Content="Войти" Grid.Column="1" Margin="10"
                             Style="{StaticResource ButtonStyle}" Click="LogIn"/>
                     <Button Content="Забыли пароль?" Grid.Column="2" Margin="10"
-                            Style="{StaticResource ButtonStyle}"/>
+                            Style="{StaticResource ButtonStyle}" Click="OpenRestorePasswordWindow"/>
                 </Grid>
             </StackPanel>
         </Border>
