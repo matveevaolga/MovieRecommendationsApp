@@ -5,28 +5,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Mail;
 using System.Net;
+using static MovieRecommendationsApp.MVVM.Model.JsonParsing;
 
 namespace MovieRecommendationsApp.MVVM.Model
 {
     public class EmailProcessing
     {
-        const string server = "smtp.mail.ru";
-        const int port = 587;
-        const string senderUsername = "...";
-        const string senderPassword = "...";
-        public static void SendWelcome()
+        EmailData SenderData { get; init; }
+        string RecipientUserName { get; init; }
+        public EmailProcessing(string recipientUsername)
         {
-            using (SmtpClient smtpClient = new SmtpClient(server, port)) 
+            SenderData = ParseEmail();
+            if (SenderData == null) { throw new ArgumentNullException(); }
+            RecipientUserName = recipientUsername;
+        }
+        public void SendWelcome(string login, string password)
+        {
+            using (SmtpClient smtpClient = new SmtpClient(SenderData.Server, SenderData.Port)) 
             {
-                smtpClient.Credentials = new NetworkCredential(senderUsername,
-                    senderPassword);
+                smtpClient.Credentials = new NetworkCredential(SenderData.SenderUsername,
+                    SenderData.SenderPassword);
                 smtpClient.EnableSsl = true;
-                MailAddress from = new MailAddress(senderUsername, "Account");
-                MailAddress to = new MailAddress(senderUsername);
+                MailAddress from = new MailAddress(SenderData.SenderUsername, "Account");
+                MailAddress to = new MailAddress(RecipientUserName);
                 using (MailMessage mailMessage = new MailMessage(from, to))
                 {
                     mailMessage.Subject = "Добро пожаловать!";
-                    mailMessage.Body = "Вы успешно зарегистрировались";
+                    mailMessage.Body = "Вы успешно зарегистрировались в приложении MovieRecommendations.\n" +
+                        $"Ваши данные для входа:\nЛогин: {login}\nПароль: {password}";
                     mailMessage.BodyEncoding = Encoding.UTF8;
                     smtpClient.Send(mailMessage);
                 }
