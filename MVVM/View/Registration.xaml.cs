@@ -80,6 +80,8 @@ namespace MovieRecommendationsApp.MVVM.View
             if (DBHelpFunctional.LoginExists(login)) 
                 { LoginHint = "Пользователь с таким логином уже зарегистрирован"; return; }
             DBHelpFunctional.Register(login, password, email);
+            EmailProcessing emailProcessing = new EmailProcessing(email);
+            emailProcessing.SendWelcome(login, password);
             toAuthorization.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
         }
 
