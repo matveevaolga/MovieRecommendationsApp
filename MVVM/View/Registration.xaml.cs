@@ -28,21 +28,27 @@ namespace MovieRecommendationsApp.MVVM.View
         {
             get { return loginHint; }
             set
-            { loginHint = value; OnPropertyChanged("LoginHint"); }
+            {
+                loginHint = value; OnPropertyChanged("LoginHint");
+            }
         }
         string passwordHint;
         public string PasswordHint
         {
             get { return passwordHint; }
             set
-            { passwordHint = value; OnPropertyChanged("PasswordHint"); }
+            {
+                passwordHint = value; OnPropertyChanged("PasswordHint");
+            }
         }
         string emailHint;
         public string EmailHint
         {
             get { return emailHint; }
             set
-            { emailHint = value; OnPropertyChanged("EmailHint"); }
+            {
+                emailHint = value; OnPropertyChanged("EmailHint");
+            }
         }
         public Registration()
         {
@@ -77,11 +83,24 @@ namespace MovieRecommendationsApp.MVVM.View
                 if (email == "") EmailHint = "Вы не ввели почту";
                 return;
             }
-            if (DBHelpFunctional.LoginExists(login)) 
-                { LoginHint = "Пользователь с таким логином уже зарегистрирован"; return; }
+            if (DBHelpFunctional.LoginExists(login))
+            {
+                LoginHint = "Пользователь с таким логином уже зарегистрирован"; return;
+            }
+            if (DBHelpFunctional.EmailExists(email))
+            {
+                EmailHint = "Пользователь с такой почтой уже зарегистрирован"; return;
+            }
+            try
+            {
+                EmailProcessing emailProcessing = new EmailProcessing(email);
+                emailProcessing.SendWelcome(login, password);
+            }
+            catch
+            {
+                EmailHint = "Введенная почта некорректна"; return;
+            }
             DBHelpFunctional.Register(login, password, email);
-            EmailProcessing emailProcessing = new EmailProcessing(email);
-            emailProcessing.SendWelcome(login, password);
             toAuthorization.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
         }
 

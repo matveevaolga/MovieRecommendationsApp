@@ -15,6 +15,12 @@ namespace MovieRecommendationsApp.MVVM.ViewModel
             return dBFunctions.LoginExists(login);
         }
 
+        public static bool EmailExists(string email)
+        {
+            DBFunctions dBFunctions = new DBFunctions();
+            return dBFunctions.EmailExists(email);
+        }
+
         public static bool PasswordCorrect(string login, string password)
         {
             DBFunctions dBFunctions = new DBFunctions();

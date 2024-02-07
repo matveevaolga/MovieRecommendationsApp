@@ -39,6 +39,19 @@ namespace MovieRecommendationsApp.MVVM.Model
             return table.Rows.Count > 0;
         }
 
+        public bool EmailExists(string email)
+        {
+            DataTable table = new DataTable();
+            connectorToDb.OpenConnection();
+            MySqlCommand registered = new MySqlCommand("select * from users " +
+                "where email = @uEmail;", connectorToDb.GetConnection());
+            registered.Parameters.AddWithValue("@uEmail", email);
+            cursor.SelectCommand = registered;
+            cursor.Fill(table);
+            connectorToDb.CloseConnection();
+            return table.Rows.Count > 0;
+        }
+
         public bool PasswordCorrect(string login, string password)
         {
             DataTable table = new DataTable();
