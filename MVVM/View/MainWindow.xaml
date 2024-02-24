@@ -6,12 +6,10 @@
         xmlns:local="clr-namespace:MovieRecommendationsApp.MVVM.View"
         mc:Ignorable="d" WindowState="Maximized"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Authorization" Height="900" Width="1500"
+        Title="Authorization" MinHeight="550" MinWidth="800"
         Loaded="NewLogInProcessing">
-    <Grid Background="#4F4557">
-        <Border Style="{StaticResource MainBorder}">
-            <Label Style="{StaticResource TitleLabel}" Content="Вход выполнен" HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
-        </Border>
-    </Grid>
+    <Border Style="{StaticResource MainBorder}">
+        <Label Style="{StaticResource TitleLabel}" Content="Вход выполнен"
+               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Border>
 </Window>

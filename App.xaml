@@ -65,9 +65,7 @@
             <Style TargetType="Border" x:Key="MainBorder"
                    BasedOn="{StaticResource MaterialDesignToolBarMainPanelBorderStyle}">
                 <Setter Property="Background" Value="#6D5D6E"></Setter>
-                <Setter Property="Margin" Value="50"></Setter>
-                <Setter Property="MaxHeight" Value="900"></Setter>
-                <Setter Property="MaxWidth" Value="1000"></Setter>
+                <Setter Property="CornerRadius" Value="50"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

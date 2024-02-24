@@ -6,37 +6,36 @@
         xmlns:local="clr-namespace:MovieRecommendationsApp.MVVM.View"
         mc:Ignorable="d" WindowState="Maximized"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Authorization" Height="900" Width="1500">
-    <Grid Background="#4F4557">
-        <Border Style="{StaticResource MainBorder}">
-            <StackPanel VerticalAlignment="Center" Margin="20 0 20 0">
-                <Label Content="Регистрация" Style="{StaticResource TitleLabel}"/>
-                <TextBox Style="{StaticResource TextBoxWithHint}"
-                         x:Name="loginTextBox" 
-                         materialDesign:HintAssist.Hint="{Binding LoginHint,
-                         UpdateSourceTrigger=PropertyChanged}" TextChanged="ResetTextBox"/>
-                <TextBox Style="{StaticResource TextBoxWithHint}" 
-                         x:Name="passwordTextBox"
-                         materialDesign:HintAssist.Hint="{Binding PasswordHint,
-                    UpdateSourceTrigger=PropertyChanged}" TextChanged="ResetTextBox"/>
-                <TextBox Style="{StaticResource TextBoxWithHint}" 
-                         x:Name="emailTextBox"
-                         materialDesign:HintAssist.Hint="{Binding EmailHint,
-                    UpdateSourceTrigger=PropertyChanged}" TextChanged="ResetTextBox"/>
-                <Grid Margin="0 20 0 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Button Content="Зарегистрироваться" Grid.Column="0" 
-                            Margin="10" Style="{StaticResource ButtonStyle}"
-                            Click="SignUp"/>
-                    <Button Content="К авторизации" Grid.Column="2"
-                            Click="OpenAuthorizationWindow" Margin="10"
-                            Style="{StaticResource ButtonStyle}"
-                            x:Name="toAuthorization"/>
-                </Grid>
-            </StackPanel>
-        </Border>
-    </Grid>
+        Title="Authorization" MinHeight="550" MinWidth="800"
+        Background="Transparent" AllowsTransparency="True">
+    <Border Style="{StaticResource MainBorder}">
+        <StackPanel VerticalAlignment="Center" Margin="20 0 20 0">
+            <Label Content="Регистрация" Style="{StaticResource TitleLabel}"/>
+            <TextBox Style="{StaticResource TextBoxWithHint}"
+                        x:Name="loginTextBox" 
+                        materialDesign:HintAssist.Hint="{Binding LoginHint,
+                        UpdateSourceTrigger=PropertyChanged}" TextChanged="ResetTextBox"/>
+            <TextBox Style="{StaticResource TextBoxWithHint}" 
+                        x:Name="passwordTextBox"
+                        materialDesign:HintAssist.Hint="{Binding PasswordHint,
+                UpdateSourceTrigger=PropertyChanged}" TextChanged="ResetTextBox"/>
+            <TextBox Style="{StaticResource TextBoxWithHint}" 
+                        x:Name="emailTextBox"
+                        materialDesign:HintAssist.Hint="{Binding EmailHint,
+                UpdateSourceTrigger=PropertyChanged}" TextChanged="ResetTextBox"/>
+            <Grid Margin="0 20 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Content="Зарегистрироваться" Grid.Column="0" 
+                        Margin="10" Style="{StaticResource ButtonStyle}"
+                        Click="SignUp"/>
+                <Button Content="К авторизации" Grid.Column="2"
+                        Click="OpenAuthorizationWindow" Margin="10"
+                        Style="{StaticResource ButtonStyle}"
+                        x:Name="toAuthorization"/>
+            </Grid>
+        </StackPanel>
+    </Border>
 </Window>

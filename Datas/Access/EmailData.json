@@ -1,0 +1,6 @@
+﻿{
+  "Server": "smtp.mail.ru",
+  "Port": 587,
+  "SenderUsername": "owner.a@mail.ru",
+  "SenderPassword": "PHqHUEnueSTk2Tt3tXrM"
+}
