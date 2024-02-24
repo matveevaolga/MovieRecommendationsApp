@@ -18,11 +18,26 @@ namespace MovieRecommendationsApp.MVVM.Model
             public string Database { get; set; }
         }
 
+        public class EmailData
+        {
+            public string Server { get; set; }
+            public int Port { get; set; }
+            public string SenderUsername { get; set; }
+            public string SenderPassword { get; set; }
+        }
+
         public static ServerData ParseServer()
         {
             string json = System.IO.File.ReadAllText("..\\..\\..\\Datas\\Access\\ServerData.json");
-            ServerData serverData = JsonSerializer.Deserialize<ServerData>(json);
+            ServerData? serverData = JsonSerializer.Deserialize<ServerData>(json);
             return serverData;
+        }
+
+        public static EmailData ParseEmail()
+        {
+            string json = System.IO.File.ReadAllText("..\\..\\..\\Datas\\Access\\EmailData.json");
+            EmailData? emailData = JsonSerializer.Deserialize<EmailData>(json);
+            return emailData;
         }
     }
 }
