@@ -362,3 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /Datas/Access/ServerData.json
+/Datas/Access/EmailData.json
