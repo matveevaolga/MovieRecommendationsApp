@@ -32,5 +32,33 @@ namespace MovieRecommendationsApp.MVVM.View
         {
             DBHelpFunctional.UpdateDaysOnline(Login);
         }
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void CloseWindow(object sender, RoutedEventArgs e) =>
+            this.Close();
+
+        private void MinimizeWindow(object sender, RoutedEventArgs e) =>
+            WindowState = WindowState.Minimized;
+        
+        private void ChangeWindowSize(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            if (button.Template == (ControlTemplate)Application.Current.Resources["RestoreTemplate"])
+            {
+                WindowState = WindowState.Normal;
+                button.Template = (ControlTemplate)Application.Current.Resources["MaximizeTemplate"];
+            }
+            else
+            {
+                WindowState = WindowState.Maximized;
+                button.Template = (ControlTemplate)Application.Current.Resources["RestoreTemplate"];
+            }
+        }
     }
 }
