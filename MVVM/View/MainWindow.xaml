@@ -19,6 +19,9 @@
             </Grid.ColumnDefinitions>
             <Border Grid.Column="0" CornerRadius="5 0 0 5" Style="{StaticResource InnerBorder}">
                 <StackPanel Margin="0 30 0 0">
+                    <RadioButton Foreground="#07F3C0" Content="Главная"
+                                 Style="{StaticResource NavigationButton}"
+                                 Template="{StaticResource HomeButtonTemplate}"/>
                     <RadioButton Foreground="#784DFD" Content="Профиль"
                                  Style="{StaticResource NavigationButton}"
                                  Template="{StaticResource AccountButtonTemplate}"/>
@@ -37,6 +40,7 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
@@ -54,6 +58,21 @@
                         <Button Grid.Column="3" Foreground="#DA34AE" Click="CloseWindow"
                         Template="{StaticResource CloseTemplate}"/>
                     </Grid>
+                    <DockPanel Grid.Row="1" LastChildFill="True">
+                        <Button DockPanel.Dock="Right"
+                                Style="{StaticResource ButtonStyle}"
+                                Content="Поиск" Margin="0 0 5 0"
+                                Template="{StaticResource ButtonTemplate}"
+                                Width="100"/>
+                        <materialDesign:PackIcon Kind="Magnify" DockPanel.Dock="Left"
+                                                 Foreground="#8A16C1" Width="50"
+                                                 Height="40"
+                                                 HorizontalAlignment="Stretch" 
+                                                 VerticalAlignment="Stretch"/>
+                        <TextBox Margin="5 0 0 0" Style="{StaticResource TextBoxWithHint}" x:Name="loginTextBox"
+                        materialDesign:HintAssist.Hint="Что хотите найти?" FontSize="19"/>
+                    </DockPanel>
+                    <ContentControl Grid.Row="2"/>
                 </Grid>
             </Border>
         </Grid>

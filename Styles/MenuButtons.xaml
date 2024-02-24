@@ -85,6 +85,27 @@
             </Grid>
         </Border>
     </ControlTemplate>
+    <ControlTemplate x:Key="HomeButtonTemplate" TargetType="RadioButton">
+        <Border Background="{TemplateBinding Background}"
+                BorderThickness="4 0 0 0"
+                BorderBrush="{TemplateBinding BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Kind="Home"
+                                     Background="Transparent"
+                                     Foreground="{TemplateBinding Foreground}"
+                                     Height="{TemplateBinding Height}"
+                                     Width="{TemplateBinding Width}"
+                                     Grid.Column="0" Margin="20 0 0 0"/>
+                <ContentPresenter HorizontalAlignment="Left"
+                                  VerticalAlignment="Center"
+                                  Grid.Column="1"/>
+            </Grid>
+        </Border>
+    </ControlTemplate>
     <Style x:Key="NavigationButton" TargetType="RadioButton">
         <Setter Property="FontFamily" Value="Montserrat"/>
         <Setter Property="FontSize" Value="15"/>
