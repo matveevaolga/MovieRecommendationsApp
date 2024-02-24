@@ -4,38 +4,56 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieRecommendationsApp.MVVM.View"
-        mc:Ignorable="d" WindowState="Maximized"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Authorization" MinHeight="550" MinWidth="800"
-        Background="Transparent" AllowsTransparency="True">
-    <Border Style="{StaticResource MainBorder}">
-        <StackPanel VerticalAlignment="Center" Margin="20 0 20 0">
-            <Label Content="Регистрация" Style="{StaticResource TitleLabel}"/>
-            <TextBox Style="{StaticResource TextBoxWithHint}"
+        mc:Ignorable="d" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Authorization" Height="550" Width="800" ResizeMode="NoResize"
+        Background="Transparent" AllowsTransparency="True" WindowStyle="None"
+        MouseDown="Window_MouseDown">
+    <Border Style="{StaticResource LogInBorder}">
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="30"></ColumnDefinition>
+                    <ColumnDefinition Width="30"></ColumnDefinition>
+                    <ColumnDefinition Width="5"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Foreground="#28AEED" Click="MinimizeWindow"
+                Template="{StaticResource MinimizeTemplate}"/>
+                <Button Grid.Column="2" Foreground="#DA34AE" Click="CloseWindow"
+                Template="{StaticResource CloseTemplate}"/>
+            </Grid>
+            <StackPanel VerticalAlignment="Center" Margin="20 0 20 0" Grid.Row="1">
+                <Label Content="Регистрация" Style="{StaticResource TitleLabel}"/>
+                <TextBox Style="{StaticResource TextBoxWithHint}"
                         x:Name="loginTextBox" 
                         materialDesign:HintAssist.Hint="{Binding LoginHint,
                         UpdateSourceTrigger=PropertyChanged}" TextChanged="ResetTextBox"/>
-            <TextBox Style="{StaticResource TextBoxWithHint}" 
+                <TextBox Style="{StaticResource TextBoxWithHint}" 
                         x:Name="passwordTextBox"
                         materialDesign:HintAssist.Hint="{Binding PasswordHint,
                 UpdateSourceTrigger=PropertyChanged}" TextChanged="ResetTextBox"/>
-            <TextBox Style="{StaticResource TextBoxWithHint}" 
+                <TextBox Style="{StaticResource TextBoxWithHint}" 
                         x:Name="emailTextBox"
                         materialDesign:HintAssist.Hint="{Binding EmailHint,
                 UpdateSourceTrigger=PropertyChanged}" TextChanged="ResetTextBox"/>
-            <Grid Margin="0 20 0 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Button Content="Зарегистрироваться" Grid.Column="0" 
+                <Grid Margin="0 20 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Зарегистрироваться" Grid.Column="0" 
                         Margin="10" Style="{StaticResource ButtonStyle}"
-                        Click="SignUp"/>
-                <Button Content="К авторизации" Grid.Column="2"
+                        Click="SignUp" Template="{StaticResource ButtonTemplate}"/>
+                    <Button Content="К авторизации" Grid.Column="2"
                         Click="OpenAuthorizationWindow" Margin="10"
                         Style="{StaticResource ButtonStyle}"
-                        x:Name="toAuthorization"/>
-            </Grid>
-        </StackPanel>
+                        x:Name="toAuthorization" Template="{StaticResource ButtonTemplate}"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
     </Border>
 </Window>
