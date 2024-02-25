@@ -13,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices;
+using MovieRecommendationsApp.MVVM.View.UserControls;
 
 namespace MovieRecommendationsApp.MVVM.View
 {
@@ -59,6 +61,27 @@ namespace MovieRecommendationsApp.MVVM.View
                 WindowState = WindowState.Maximized;
                 button.Template = (ControlTemplate)Application.Current.Resources["RestoreTemplate"];
             }
+        }
+
+        private void HomeChosen(object sender, RoutedEventArgs e)
+        {
+            NavigationPanelChoice.Content = new HomeUC();
+        }
+        private void AccountChosen(object sender, RoutedEventArgs e)
+        {
+            NavigationPanelChoice.Content = new AccountUC();
+        }
+        private void FavouritesChosen(object sender, RoutedEventArgs e)
+        {
+            NavigationPanelChoice.Content = new FavouritesUC();
+        }
+        private void SortChosen(object sender, RoutedEventArgs e)
+        {
+            NavigationPanelChoice.Content = new SortUC();
+        }
+        private void FilterChosen(object sender, RoutedEventArgs e)
+        {
+            NavigationPanelChoice.Content = new HomeUC();
         }
     }
 }

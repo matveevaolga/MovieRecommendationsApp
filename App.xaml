@@ -8,7 +8,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles\MenuButtons.xaml"/>
+                <ResourceDictionary Source="Dictionaries\MenuButtons.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
@@ -30,7 +30,7 @@
                         Height="{TemplateBinding Height}"
                         Width="{TemplateBinding Width}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        CornerRadius="10">
+                        CornerRadius="20">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
                             <GradientStop Color="#462ADB" Offset="0" x:Name="Stop1"/>
@@ -72,7 +72,9 @@
                     </Setter.Value>
                 </Setter>
                 <Setter Property="Foreground" Value="#F4EEE0"/>
-                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Height" Value="40"/>
             </Style>
             <Style TargetType="TextBox" x:Key="TextBoxWithHint"
                    BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
@@ -206,6 +208,39 @@
                         <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
                             <GradientStop Color="#060531" Offset="0"/>
                             <GradientStop Color="#1b1448" Offset="0.75"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="Border" x:Key="InnerDecoreBorder">
+                <Setter Property="CornerRadius" Value="30"/>
+                <Setter Property="BorderThickness" Value="5"/>
+                <Setter Property="BorderBrush">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#462ADB" Offset="0"/>
+                            <GradientStop Color="#DA34AE" Offset="0.75"/>
+                            <GradientStop Color="#8A16C1" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#462ADB" Offset="0"/>
+                            <GradientStop Color="#DA34AE" Offset="0.75"/>
+                            <GradientStop Color="#8A16C1" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="Border" x:Key="InnerLightBorder">
+                <Setter Property="CornerRadius" Value="30"/>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                            <GradientStop Color="#261d59" Offset="0"/>
+                            <GradientStop Color="#32286b" Offset="0.75"/>
                         </LinearGradientBrush>
                     </Setter.Value>
                 </Setter>
