@@ -29,7 +29,7 @@
                                  Click="AccountChosen"/>
                     <RadioButton Foreground="#F8539B" Content="Избранное"
                                  Style="{StaticResource NavigationButton}"
-                                 Template="{StaticResource FavouritesButtonTemplate}"
+                                 Template="{StaticResource FavouritesRadioButtonTemplate}"
                                  Click="FavouritesChosen"/>
                     <RadioButton Foreground="#FFC047" Content="Сортировка"
                                  Style="{StaticResource NavigationButton}"

@@ -22,7 +22,7 @@
             </Grid>
         </Border>
     </ControlTemplate>
-    <ControlTemplate x:Key="FavouritesButtonTemplate" TargetType="RadioButton">
+    <ControlTemplate x:Key="FavouritesRadioButtonTemplate" TargetType="RadioButton">
         <Border Background="{TemplateBinding Background}"
                 BorderThickness="4 0 0 0"
                 BorderBrush="{TemplateBinding BorderBrush}">

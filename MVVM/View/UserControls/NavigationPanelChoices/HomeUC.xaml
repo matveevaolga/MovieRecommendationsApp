@@ -47,43 +47,8 @@
                     Content="Лучшее" HorizontalAlignment="Center" Grid.Column="1"
                         Width="250"/>
             </Grid>
-            <WrapPanel Grid.Row="2" Orientation="Horizontal" Margin="40 20">
-                <Border Style="{StaticResource InnerDecoreBorder}" Height="300" Width="300"
-                        Margin="5">
-                    <Border.Background>
-                        <ImageBrush Stretch="Fill" ImageSource="{Binding guessedImage}"/>
-                    </Border.Background>
-                </Border>
-                <Border Style="{StaticResource InnerDecoreBorder}" Height="300" Width="300"
-                        Margin="5">
-                    <Border.Background>
-                        <ImageBrush Stretch="Fill" ImageSource="{Binding guessedImage}"/>
-                    </Border.Background>
-                </Border>
-                <Border Style="{StaticResource InnerDecoreBorder}" Height="300" Width="300"
-                        Margin="5">
-                    <Border.Background>
-                        <ImageBrush Stretch="Fill" ImageSource="{Binding guessedImage}"/>
-                    </Border.Background>
-                </Border>
-                <Border Style="{StaticResource InnerDecoreBorder}" Height="300" Width="300"
-                        Margin="5">
-                    <Border.Background>
-                        <ImageBrush Stretch="Fill" ImageSource="{Binding guessedImage}"/>
-                    </Border.Background>
-                </Border>
-                <Border Style="{StaticResource InnerDecoreBorder}" Height="300" Width="300"
-                        Margin="5">
-                    <Border.Background>
-                        <ImageBrush Stretch="Fill" ImageSource="{Binding guessedImage}"/>
-                    </Border.Background>
-                </Border>
-                <Border Style="{StaticResource InnerDecoreBorder}" Height="300" Width="300"
-                        Margin="5">
-                    <Border.Background>
-                        <ImageBrush Stretch="Fill" ImageSource="{Binding guessedImage}"/>
-                    </Border.Background>
-                </Border>
+            <WrapPanel Grid.Row="2" Orientation="Horizontal" Margin="40 20"
+                       x:Name="moviesContainer">
             </WrapPanel>
         </Grid>
     </ScrollViewer>
