@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices.HomeUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices"
+             mc:Ignorable="d" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="620" d:DesignWidth="1150">
+    <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="350"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{StaticResource InnerDecoreBorder}"
+                        Margin="50 10" MaxWidth="500">
+                    <Border.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="{Binding guessedImage}"/>
+                    </Border.Background>
+                </Border>
+                <Border Style="{StaticResource InnerLightBorder}" Grid.Column="1"
+                        Margin="40 10" Height="250">
+                    <StackPanel Margin="10">
+                        <TextBox Margin="5 0 0 0" Style="{StaticResource TextBoxWithHint}" x:Name="loginTextBox"
+                        materialDesign:HintAssist.Hint="Из какого фильма?" FontSize="25"/>
+                        <Button Style="{StaticResource ButtonStyle}" Template="{StaticResource ButtonTemplate}"
+                    Content="Ответить" HorizontalAlignment="Left" Grid.Column="1"
+                        Width="200" Margin="0 10 0 0"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource ButtonStyle}" Template="{StaticResource ButtonTemplate}"
+                    Content="Вышло недавно" HorizontalAlignment="Center" Grid.Column="0"
+                        Width="250"/>
+                <Button Style="{StaticResource ButtonStyle}" Template="{StaticResource ButtonTemplate}"
+                    Content="Лучшее" HorizontalAlignment="Center" Grid.Column="1"
+                        Width="250"/>
+            </Grid>
+            <WrapPanel Grid.Row="2" Orientation="Horizontal" Margin="40 20"
+                       x:Name="moviesContainer">
+            </WrapPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

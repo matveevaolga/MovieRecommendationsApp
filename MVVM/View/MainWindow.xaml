@@ -4,14 +4,82 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieRecommendationsApp.MVVM.View"
-        mc:Ignorable="d" WindowState="Maximized"
+        mc:Ignorable="d" WindowState="Normal"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Authorization" Height="900" Width="1500"
-        Loaded="NewLogInProcessing">
-    <Grid Background="#4F4557">
-        <Border Style="{StaticResource MainBorder}">
-            <Label Style="{StaticResource TitleLabel}" Content="Вход выполнен" HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
-        </Border>
-    </Grid>
+        Title="MainWindow" MinHeight="550" MinWidth="800"
+        ResizeMode="CanResize"
+        Loaded="NewLogInProcessing" Height="700" Width="1300"
+        Background="Transparent" AllowsTransparency="True" WindowStyle="None"
+        MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen">
+    <Border Style="{StaticResource MainBorder}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" CornerRadius="5 0 0 5" Style="{StaticResource InnerBorder}">
+                <StackPanel Margin="0 30 0 0">
+                    <RadioButton Foreground="#07F3C0" Content="Главная"
+                                 Style="{StaticResource NavigationButton}"
+                                 Template="{StaticResource HomeButtonTemplate}"
+                                 Click="HomeChosen"/>
+                    <RadioButton Foreground="#784DFD" Content="Профиль"
+                                 Style="{StaticResource NavigationButton}"
+                                 Template="{StaticResource AccountButtonTemplate}"
+                                 Click="AccountChosen"/>
+                    <RadioButton Foreground="#F8539B" Content="Избранное"
+                                 Style="{StaticResource NavigationButton}"
+                                 Template="{StaticResource FavouritesRadioButtonTemplate}"
+                                 Click="FavouritesChosen"/>
+                    <RadioButton Foreground="#FFC047" Content="Сортировка"
+                                 Style="{StaticResource NavigationButton}"
+                                 Template="{StaticResource SortButtonTemplate}"
+                                 Click="SortChosen"/>
+                    <RadioButton Foreground="#4ADAEC" Content="Фильтрация"
+                                 Style="{StaticResource NavigationButton}"
+                                 Template="{StaticResource FilterButtonTemplate}"
+                                 Click="FilterChosen"/>
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="1" CornerRadius="0 5 5 0" Style="{StaticResource InnerBorder}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="30"></ColumnDefinition>
+                            <ColumnDefinition Width="30"></ColumnDefinition>
+                            <ColumnDefinition Width="30"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="1" Foreground="#28AEED" Click="MinimizeWindow"
+                        Template="{StaticResource MinimizeTemplate}"/>
+                        <Button Grid.Column="2" Foreground="#FFC047" Click="ChangeWindowSize"
+                        Template="{StaticResource MaximizeTemplate}"/>
+                        <Button Grid.Column="3" Foreground="#DA34AE" Click="CloseWindow"
+                        Template="{StaticResource CloseTemplate}"/>
+                    </Grid>
+                    <DockPanel Grid.Row="1" LastChildFill="True">
+                        <Button DockPanel.Dock="Right"
+                                Style="{StaticResource ButtonStyle}"
+                                Content="Поиск" Margin="0 0 5 0"
+                                Template="{StaticResource ButtonTemplate}"
+                                Width="100"/>
+                        <materialDesign:PackIcon Kind="Magnify" DockPanel.Dock="Left"
+                                                 Foreground="#8A16C1" Width="50"
+                                                 Height="40"
+                                                 HorizontalAlignment="Stretch" 
+                                                 VerticalAlignment="Stretch"/>
+                        <TextBox Margin="5 0 0 0" Style="{StaticResource TextBoxWithHint}" x:Name="loginTextBox"
+                        materialDesign:HintAssist.Hint="Что хотите найти?" FontSize="25"/>
+                    </DockPanel>
+                    <ContentControl Grid.Row="2" x:Name="NavigationPanelChoice"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
 </Window>

@@ -8,6 +8,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Dictionaries\MenuButtons.xaml"/>
+                <ResourceDictionary Source="Dictionaries\MovieInfoStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
@@ -18,38 +20,62 @@
                     <Style x:Key="MaterialDesignFloatingHintTextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}"
                            TargetType="{x:Type TextBox}">
                         <Setter Property="FontSize" Value="20" />
-                        <Setter Property="materialDesign:HintAssist.Foreground" Value="#A78295"/>
-                        <Setter Property="materialDesign:TextFieldAssist.UnderlineBrush" Value="#F4EEE0"/>
+                        <Setter Property="materialDesign:HintAssist.Foreground" Value="#8A16C1"/>
+                        <Setter Property="materialDesign:TextFieldAssist.UnderlineBrush" Value="#8A16C1"/>
                     </Style>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <ControlTemplate TargetType="Button"
                              x:Key="ButtonTemplate">
-                <Border Height="{TemplateBinding Height}"
+                <Border Name="border"
+                        Height="{TemplateBinding Height}"
                         Width="{TemplateBinding Width}"
-                        Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        CornerRadius="15">
-                        <DockPanel LastChildFill="True">
-                            <materialDesign:PackIcon Kind="ArrowRightBoldCircleOutline"
-                                                 Height="{TemplateBinding Height}"
-                                                 Width="{TemplateBinding Height}"
-                                                 DockPanel.Dock="Left"
-                                                 Margin="1 0 0 0"/>
-                            <ContentControl Content="{TemplateBinding Content}"
-                                    HorizontalAlignment="Center"
-                                    Foreground="{TemplateBinding Foreground}"/>
-                        </DockPanel>
+                        CornerRadius="20">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                            <GradientStop Color="#462ADB" Offset="0" x:Name="Stop1"/>
+                            <GradientStop Color="#8A16C1" Offset="1" x:Name="Stop2"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <ContentControl Content="{TemplateBinding Content}"
+                                HorizontalAlignment="Center"
+                                Foreground="{TemplateBinding Foreground}"/>
                 </Border>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard x:Name="MouseOver">
+                                <Storyboard RepeatBehavior="Forever" AutoReverse="True">
+                                    <ColorAnimation Storyboard.TargetName="Stop1"
+                                                    Storyboard.TargetProperty="Color"
+                                                    To="#8A16C1"/>
+                                    <ColorAnimation Storyboard.TargetName="Stop2"
+                                                    Storyboard.TargetProperty="Color"
+                                                    To="#462ADB"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <StopStoryboard BeginStoryboardName="MouseOver"/>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                </ControlTemplate.Triggers>
             </ControlTemplate>
             <Style TargetType="Button" x:Key="ButtonStyle" 
                  BasedOn="{StaticResource MaterialDesignFlatButton}">
-                <Setter Property="Background" Value="#A78295"></Setter>
-                <Setter Property="BorderBrush" Value="#A78295"></Setter>
-                <Setter Property="Foreground" Value="#F4EEE0"></Setter>
-                <Setter Property="FontSize" Value="20"></Setter>
-                <Setter Property="MinHeight" Value="0"></Setter>
-                <Setter Property="Template" Value="{StaticResource ButtonTemplate}"/>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                            <GradientStop Color="#462ADB" Offset="0"/>
+                            <GradientStop Color="#8A16C1" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="#F4EEE0"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Height" Value="40"/>
             </Style>
             <Style TargetType="TextBox" x:Key="TextBoxWithHint"
                    BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
@@ -62,12 +88,183 @@
                 <Setter Property="FontSize" Value="50"></Setter>
                 <Setter Property="Foreground" Value="#F4EEE0"></Setter>
             </Style>
-            <Style TargetType="Border" x:Key="MainBorder"
-                   BasedOn="{StaticResource MaterialDesignToolBarMainPanelBorderStyle}">
-                <Setter Property="Background" Value="#6D5D6E"></Setter>
-                <Setter Property="Margin" Value="50"></Setter>
-                <Setter Property="MaxHeight" Value="900"></Setter>
-                <Setter Property="MaxWidth" Value="1000"></Setter>
+            <Style TargetType="Border" x:Key="LogInBorder">
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="BorderThickness" Value="5"/>
+                <Setter Property="BorderBrush">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#462ADB" Offset="0"/>
+                            <GradientStop Color="#DA34AE" Offset="0.75"/>
+                            <GradientStop Color="#8A16C1" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Grid>
+                                    <Border Height="550" Width="800">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                                                <GradientStop Color="#060531" Offset="0"/>
+                                                <GradientStop Color="#1b1448" Offset="0.75"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                    </Border>
+                                    <Border Height="550" Width="800">
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="D:\C#projects\MovieRecommendationsApp\Datas\Images\logInImage.jpg"
+                                Stretch="Fill" Opacity="0.25"/>
+                                        </Border.Background>
+                                    </Border>
+                                </Grid>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <ControlTemplate TargetType="Button" x:Key="CloseTemplate">
+                <materialDesign:PackIcon Kind="WindowClose" Name="icon"
+                                         Foreground="{TemplateBinding Foreground}"
+                                         Height="{TemplateBinding Height}"
+                                         Width="{TemplateBinding Width}"
+                                         Background="Transparent"
+                                         HorizontalAlignment="Center"/>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="Button.IsMouseOver" Value="True">
+                        <Setter Property="Button.Background"
+                                TargetName="icon"
+                                Value="#8A16C1"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+            <ControlTemplate TargetType="Button" x:Key="MinimizeTemplate">
+                <materialDesign:PackIcon Kind="WindowMinimize" Name="icon"
+                                         Foreground="{TemplateBinding Foreground}"
+                                         Height="{TemplateBinding Height}"
+                                         Width="{TemplateBinding Width}"
+                                         HorizontalAlignment="Center"/>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="Button.IsMouseOver" Value="True">
+                        <Setter Property="Button.Background"
+                                TargetName="icon"
+                                Value="#8A16C1"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+            <ControlTemplate TargetType="Button" x:Key="MaximizeTemplate">
+                <materialDesign:PackIcon Kind="WindowMaximize" Name="icon"
+                                         Foreground="{TemplateBinding Foreground}"
+                                         Height="{TemplateBinding Height}"
+                                         Width="{TemplateBinding Width}"
+                                         HorizontalAlignment="Center"/>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="Button.IsMouseOver" Value="True">
+                        <Setter Property="Button.Background"
+                                TargetName="icon"
+                                Value="#8A16C1"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+            <ControlTemplate TargetType="Button" x:Key="RestoreTemplate">
+                <materialDesign:PackIcon Kind="WindowRestore" Name="icon"
+                                         Foreground="{TemplateBinding Foreground}"
+                                         Height="{TemplateBinding Height}"
+                                         Width="{TemplateBinding Width}"
+                                         HorizontalAlignment="Center"/>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="Button.IsMouseOver" Value="True">
+                        <Setter Property="Button.Background"
+                                TargetName="icon"
+                                Value="#8A16C1"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+            <Style TargetType="Border" x:Key="MainBorder">
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="BorderThickness" Value="5"/>
+                <Setter Property="BorderBrush">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#462ADB" Offset="0"/>
+                            <GradientStop Color="#DA34AE" Offset="0.75"/>
+                            <GradientStop Color="#8A16C1" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                                <GradientStop Color="#060531" Offset="0"/>
+                                <GradientStop Color="#1b1448" Offset="0.75"/>
+                            </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="Border" x:Key="InnerBorder">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                            <GradientStop Color="#060531" Offset="0"/>
+                            <GradientStop Color="#1b1448" Offset="0.75"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="Border" x:Key="InnerDecoreBorder">
+                <Setter Property="CornerRadius" Value="30"/>
+                <Setter Property="BorderThickness" Value="5"/>
+                <Setter Property="BorderBrush">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#462ADB" Offset="0"/>
+                            <GradientStop Color="#DA34AE" Offset="0.75"/>
+                            <GradientStop Color="#8A16C1" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#462ADB" Offset="0"/>
+                            <GradientStop Color="#DA34AE" Offset="0.75"/>
+                            <GradientStop Color="#8A16C1" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="Border" x:Key="InnerLightBorder">
+                <Setter Property="CornerRadius" Value="30"/>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                            <GradientStop Color="#261d59" Offset="0"/>
+                            <GradientStop Color="#32286b" Offset="0.75"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <ControlTemplate TargetType="Button" x:Key="FavouritesButtonTemplate">
+                <materialDesign:PackIcon Kind="Heart"
+                                         Height="{TemplateBinding Height}"
+                                         Width="{TemplateBinding Width}"
+                                         Foreground="{TemplateBinding Foreground}"
+                                         Background="{TemplateBinding Background}"/>
+            </ControlTemplate>
+            <Style TargetType="Button" x:Key="FavouritesButton">
+                <Setter Property="Foreground">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                            <GradientStop Color="#8A16C1" Offset="0"/>
+                            <GradientStop Color="#DA34AE" Offset="0.75"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

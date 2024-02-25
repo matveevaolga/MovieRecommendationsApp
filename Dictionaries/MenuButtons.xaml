@@ -1,0 +1,125 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <ControlTemplate x:Key="AccountButtonTemplate" TargetType="RadioButton">
+        <Border Background="{TemplateBinding Background}"
+                BorderThickness="4 0 0 0"
+                BorderBrush="{TemplateBinding BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Kind="Account"
+                                     Background="Transparent"
+                                     Foreground="{TemplateBinding Foreground}"
+                                     Height="{TemplateBinding Height}"
+                                     Width="{TemplateBinding Width}"
+                                     Grid.Column="0" Margin="20 0 0 0"/>
+                <ContentPresenter HorizontalAlignment="Left"
+                                  VerticalAlignment="Center"
+                                  Grid.Column="1"/>
+            </Grid>
+        </Border>
+    </ControlTemplate>
+    <ControlTemplate x:Key="FavouritesRadioButtonTemplate" TargetType="RadioButton">
+        <Border Background="{TemplateBinding Background}"
+                BorderThickness="4 0 0 0"
+                BorderBrush="{TemplateBinding BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Kind="Heart"
+                                     Background="Transparent"
+                                     Foreground="{TemplateBinding Foreground}"
+                                     Height="{TemplateBinding Height}"
+                                     Width="{TemplateBinding Width}"
+                                     Grid.Column="0" Margin="20 0 0 0"/>
+                <ContentPresenter HorizontalAlignment="Left"
+                                  VerticalAlignment="Center"
+                                  Grid.Column="1"/>
+            </Grid>
+        </Border>
+    </ControlTemplate>
+    <ControlTemplate x:Key="SortButtonTemplate" TargetType="RadioButton">
+        <Border Background="{TemplateBinding Background}"
+                BorderThickness="4 0 0 0"
+                BorderBrush="{TemplateBinding BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Kind="Sort"
+                                     Background="Transparent"
+                                     Foreground="{TemplateBinding Foreground}"
+                                     Height="{TemplateBinding Height}"
+                                     Width="{TemplateBinding Width}"
+                                     Grid.Column="0" Margin="20 0 0 0"/>
+                <ContentPresenter HorizontalAlignment="Left"
+                                  VerticalAlignment="Center"
+                                  Grid.Column="1"/>
+            </Grid>
+        </Border>
+    </ControlTemplate>
+    <ControlTemplate x:Key="FilterButtonTemplate" TargetType="RadioButton">
+        <Border Background="{TemplateBinding Background}"
+                BorderThickness="4 0 0 0"
+                BorderBrush="{TemplateBinding BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Kind="FilterMenu"
+                                     Background="Transparent"
+                                     Foreground="{TemplateBinding Foreground}"
+                                     Height="{TemplateBinding Height}"
+                                     Width="{TemplateBinding Width}"
+                                     Grid.Column="0" Margin="20 0 0 0"/>
+                <ContentPresenter HorizontalAlignment="Left"
+                                  VerticalAlignment="Center"
+                                  Grid.Column="1"/>
+            </Grid>
+        </Border>
+    </ControlTemplate>
+    <ControlTemplate x:Key="HomeButtonTemplate" TargetType="RadioButton">
+        <Border Background="{TemplateBinding Background}"
+                BorderThickness="4 0 0 0"
+                BorderBrush="{TemplateBinding BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Kind="Home"
+                                     Background="Transparent"
+                                     Foreground="{TemplateBinding Foreground}"
+                                     Height="{TemplateBinding Height}"
+                                     Width="{TemplateBinding Width}"
+                                     Grid.Column="0" Margin="20 0 0 0"/>
+                <ContentPresenter HorizontalAlignment="Left"
+                                  VerticalAlignment="Center"
+                                  Grid.Column="1"/>
+            </Grid>
+        </Border>
+    </ControlTemplate>
+    <Style x:Key="NavigationButton" TargetType="RadioButton">
+        <Setter Property="FontFamily" Value="Montserrat"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Margin" Value="-5 0 0 5"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Margin" Value="0 0 0 5"/>
+                <Setter Property="Background" Value="#1b1448"/>
+                <Setter Property="BorderBrush" Value="{Binding Path=Foreground,
+                    RelativeSource={RelativeSource Self}}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
