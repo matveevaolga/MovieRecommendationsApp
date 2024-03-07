@@ -25,6 +25,7 @@
                     </Style>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+            <BitmapImage x:Key="DefaultImage" UriSource="Datas/Images/logInImage.jpg" />
             <ControlTemplate TargetType="Button"
                              x:Key="ButtonTemplate">
                 <Border Name="border"
@@ -115,8 +116,7 @@
                                     </Border>
                                     <Border Height="550" Width="800">
                                         <Border.Background>
-                                            <ImageBrush ImageSource="D:\C#projects\MovieRecommendationsApp\Datas\Images\logInImage.jpg"
-                                Stretch="Fill" Opacity="0.25"/>
+                                            <ImageBrush ImageSource="{StaticResource DefaultImage}" Stretch="Fill" Opacity="0.25"/>
                                         </Border.Background>
                                     </Border>
                                 </Grid>
