@@ -8,9 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -49,15 +51,38 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
 
         private void HideDetails(object sender, MouseEventArgs e)
         {
-            if (!popupContent.IsFocused)
-            {
+            if (!popupContent.IsMouseOver && !mainBorder.IsMouseOver)
                 OpenPopup = false;
-            }
+            else if (!popupContent.IsMouseOver)
+                OpenPopup = false;
         }
 
         private void ShowDetails(object sender, MouseEventArgs e)
         {
-            OpenPopup = true;
+            if (GetOpenPopups().Count > 0) return;
+            Window activeWindow = Application.Current.Windows.
+                OfType<Window>().SingleOrDefault(x => x.IsActive);
+            Point mousePoint = Mouse.GetPosition(activeWindow);
+            if (activeWindow.WindowState == WindowState.Maximized ||
+                (mousePoint.Y + 200f <= Application.Current.MainWindow.ActualHeight &&
+                 mousePoint.Y - 330f >= 0))
+            {
+                popupContent.Placement = PlacementMode.Right;
+                if (mousePoint.X + 450f  > Application.Current.MainWindow.ActualWidth)
+                {
+                    popupContent.Placement = PlacementMode.Left;
+                }
+                OpenPopup = true;
+            }
+        }
+        public static List<Popup> GetOpenPopups()
+        {
+            return PresentationSource.CurrentSources.OfType<HwndSource>()
+                .Select(h => h.RootVisual)
+                .OfType<FrameworkElement>()
+                .Select(f => f.Parent)
+                .OfType<Popup>()
+                .Where(p => p.IsOpen).ToList();
         }
     }
 }
