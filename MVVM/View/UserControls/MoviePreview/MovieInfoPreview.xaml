@@ -8,9 +8,14 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Border Style="{StaticResource InnerLightBorder}" CornerRadius="20">
         <StackPanel Margin="15">
-            <Image Source="D:\C#projects\MovieRecommendationsApp\Datas\Images\logInImage.jpg"
-                   MouseEnter="ShowDetails" MouseLeave="HideDetails" Height="200"
-                   Width="270"/>
+            <Image x:Name="picture" Source="{StaticResource DefaultImage}"
+                   MouseEnter="ShowDetails" MouseLeave="HideDetails"
+                   Height="200" Width="270">
+            </Image>
+            <Popup x:Name="popupContent" IsOpen="{Binding OpenPopup}"
+                   PlacementTarget="{Binding ElementName=picture}" >
+                <ContentControl Content="{Binding tipPopup}"/>
+            </Popup>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             Height="300" Width="300">
     <Border Style="{StaticResource DetailsBorder}">
         <Grid Margin="10">
             <Grid.RowDefinitions>

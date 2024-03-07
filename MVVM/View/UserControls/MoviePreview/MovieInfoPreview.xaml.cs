@@ -1,7 +1,9 @@
 ﻿using MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,30 +21,43 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
     /// <summary>
     /// Логика взаимодействия для MovieInfoPreview.xaml
     /// </summary>
-    public partial class MovieInfoPreview : UserControl
+    public partial class MovieInfoPreview : UserControl, INotifyPropertyChanged
     {
         MovieInfoPreviewDetails details;
         HomeUC caller;
+        public MovieInfoPreviewDetails tipPopup { get; set; }
+        bool openPopup;
+        public bool OpenPopup
+        {
+            get { return openPopup; }
+            set
+            { openPopup = value; OnPropertyChanged("OpenPopup"); }
+        }
         public MovieInfoPreview(object caller)
         {
             details = new MovieInfoPreviewDetails();
             this.caller = (HomeUC)caller;
             InitializeComponent();
+            OpenPopup = false;
+            tipPopup = new MovieInfoPreviewDetails();
+            DataContext = this;
         }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         private void HideDetails(object sender, MouseEventArgs e)
         {
-            //details.Margin = this.Margin;
-            //details.Width = this.Width;
-            //details.Height = this.Height;
-            //details.Visibility = Visibility.Visible;
-            //Console.WriteLine(details.Margin);
-
+            if (!popupContent.IsFocused)
+            {
+                OpenPopup = false;
+            }
         }
 
         private void ShowDetails(object sender, MouseEventArgs e)
         {
-            //details.Visibility = Visibility.Collapsed;
+            OpenPopup = true;
         }
     }
 }
