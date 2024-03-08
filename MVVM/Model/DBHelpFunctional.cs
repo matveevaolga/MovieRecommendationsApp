@@ -49,5 +49,12 @@ namespace MovieRecommendationsApp.MVVM.ViewModel
             if (lastDate.Date != DateTime.Now.Date) 
                 dBFunctions.UpdateDaysOnline(login);
         }
+
+        public static void HelpCreateDataBase(string port,
+            string username, string password)
+        {
+            JsonParsing.UpdateServerData(port, username, password);
+            DBFunctions.CreateLocalDB();
+        }
     }
 }
