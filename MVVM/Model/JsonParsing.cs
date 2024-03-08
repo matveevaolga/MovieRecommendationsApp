@@ -33,6 +33,19 @@ namespace MovieRecommendationsApp.MVVM.Model
             return serverData;
         }
 
+        public static void UpdateServerData(string port, string username, string password)
+        {
+            string json = System.IO.File.ReadAllText("..\\..\\..\\Datas\\Access\\ServerData.json");
+            ServerData? serverData = JsonSerializer.Deserialize<ServerData>(json);
+            serverData.Port = port;
+            serverData.Username = username;
+            serverData.Password = password;
+            JsonSerializerOptions options = new JsonSerializerOptions();
+            options.WriteIndented = true;
+            json = JsonSerializer.Serialize<ServerData>(serverData, options);
+            System.IO.File.WriteAllText("..\\..\\..\\Datas\\Access\\ServerData.json", json);
+        }
+
         public static EmailData ParseEmail()
         {
             string json = System.IO.File.ReadAllText("..\\..\\..\\Datas\\Access\\EmailData.json");
