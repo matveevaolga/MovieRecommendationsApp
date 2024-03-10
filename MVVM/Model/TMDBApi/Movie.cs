@@ -32,10 +32,10 @@ namespace TMDBApi
             var client = new HttpClient();
             BitmapImage image = new BitmapImage();
             var request = ApiQueriesProcessing.FormRequest(query);
-            using (var response = await client.SendAsync(request))
+            using (var response = await client.SendAsync(request).ConfigureAwait(false))
             {
                 response.EnsureSuccessStatusCode();
-                var body = await response.Content.ReadAsStreamAsync();
+                var body = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
                 image.StreamSource = body;
             }
             return image;

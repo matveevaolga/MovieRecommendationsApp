@@ -44,10 +44,10 @@ namespace TMDBApi
             var client = new HttpClient();
             var request = FormRequest(query);
             string name;
-            using (var response = await client.SendAsync(request))
+            using (var response = await client.SendAsync(request).ConfigureAwait(false))
             {
                 response.EnsureSuccessStatusCode();
-                var body = await response.Content.ReadAsStringAsync();
+                var body = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 Dictionary<string, List<Genre>> genresDict =
                     JsonSerializer.Deserialize<Dictionary<string, List<Genre>>>(body, options);
                 List<Genre> genres = genresDict["genres"];
@@ -63,10 +63,10 @@ namespace TMDBApi
             var client = new HttpClient();
             var request = FormRequest(query);
             int id;
-            using (var response = await client.SendAsync(request))
+            using (var response = await client.SendAsync(request).ConfigureAwait(false))
             {
                 response.EnsureSuccessStatusCode();
-                var body = await response.Content.ReadAsStringAsync();
+                var body = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 Dictionary<string, List<Genre>> genresDict =
                     JsonSerializer.Deserialize<Dictionary<string, List<Genre>>>(body, options);
                 List<Genre> genres = genresDict["genres"];
