@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieRecommendationsApp", "MovieRecommendationsApp.csproj", "{AF02A0FD-E4ED-40D1-A16E-CCA411E860C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieRecommendationsApp", "MovieRecommendationsApp.csproj", "{AF02A0FD-E4ED-40D1-A16E-CCA411E860C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMDBApi", "MVVM\Model\TMDBApi\TMDBApi.csproj", "{74B10D71-0E96-414E-A04A-7C5C9F75D88D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{AF02A0FD-E4ED-40D1-A16E-CCA411E860C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF02A0FD-E4ED-40D1-A16E-CCA411E860C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF02A0FD-E4ED-40D1-A16E-CCA411E860C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74B10D71-0E96-414E-A04A-7C5C9F75D88D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74B10D71-0E96-414E-A04A-7C5C9F75D88D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74B10D71-0E96-414E-A04A-7C5C9F75D88D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74B10D71-0E96-414E-A04A-7C5C9F75D88D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
