@@ -36,7 +36,7 @@
                         <Label Content="Тип" HorizontalAlignment="Left" Grid.Column="0"
                                Style="{StaticResource FlatLabel}"/>
                         <Label Content="Год" HorizontalAlignment="Left" Grid.Column="1"
-                               Style="{StaticResource FlatLabel}"/>
+                               Style="{StaticResource FlatLabel}" x:Name="releaseDate"/>
                     </Grid>
                 </Grid>
             </Grid>

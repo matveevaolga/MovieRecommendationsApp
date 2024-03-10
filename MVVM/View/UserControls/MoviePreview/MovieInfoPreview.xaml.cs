@@ -35,7 +35,7 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
             set
             { openPopup = value; OnPropertyChanged("OpenPopup"); }
         }
-        public MovieInfoPreview(object caller)
+        public MovieInfoPreview(object caller, string title, string date)
         {
             details = new MovieInfoPreviewDetails();
             this.caller = (HomeUC)caller;
@@ -43,6 +43,8 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
             OpenPopup = false;
             tipPopup = new MovieInfoPreviewDetails();
             DataContext = this;
+            movieTitle.Content = title;
+            releaseDate.Content = date;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

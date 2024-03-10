@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview;
+using TMDBApi;
 
 namespace MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices
 {
@@ -26,9 +27,10 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices
         {
             InitializeComponent();
             guessedImage = "D:\\C#projects\\MovieRecommendationsApp\\Datas\\Images\\logInImage.jpg";
-            for (int i = 0; i < 13; i++)
+            var page1 = ApiQueriesProcessing.GetPageWithMovies(1).Result;
+            foreach (Movie movie in page1.Results)
             {
-                MovieInfoPreview movieInfoPreview = new MovieInfoPreview(this);
+                MovieInfoPreview movieInfoPreview = new MovieInfoPreview(this, movie.Title, movie.ReleaseDate);
                 movieInfoPreview.Margin = new Thickness(5);
                 movieInfoPreview.Height = 300;
                 movieInfoPreview.Width = 300;
