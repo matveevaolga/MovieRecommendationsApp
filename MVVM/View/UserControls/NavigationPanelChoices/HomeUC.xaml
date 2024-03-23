@@ -21,7 +21,7 @@
                 <Border Grid.Column="0" Style="{StaticResource InnerDecoreBorder}"
                         Margin="50 10" MaxWidth="500">
                     <Border.Background>
-                        <ImageBrush Stretch="Fill" ImageSource="{Binding guessedImage}"/>
+                        <ImageBrush Stretch="Fill" ImageSource="{StaticResource DefaultImage}"/>
                     </Border.Background>
                 </Border>
                 <Border Style="{StaticResource InnerLightBorder}" Grid.Column="1"

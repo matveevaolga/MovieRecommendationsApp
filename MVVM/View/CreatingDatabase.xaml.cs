@@ -23,6 +23,7 @@ namespace MovieRecommendationsApp.MVVM.View
         public CreatingDatabase()
         {
             InitializeComponent();
+            // проверка на json с сервером
         }
 
         private void OpenAuthorizationWindow()
