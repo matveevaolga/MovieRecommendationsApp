@@ -22,11 +22,9 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices
     /// </summary>
     public partial class HomeUC : UserControl
     {
-        public string guessedImage { get; set; }
         public HomeUC()
         {
             InitializeComponent();
-            guessedImage = "D:\\C#projects\\MovieRecommendationsApp\\Datas\\Images\\logInImage.jpg";
             FillMovieContainer();
             DataContext = this;
         }

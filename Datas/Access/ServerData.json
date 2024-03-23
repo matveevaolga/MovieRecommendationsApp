@@ -1,7 +1,7 @@
 {
   "Server": "localhost",
-  "Port": "",
-  "Username": "",
-  "Password": "",
+  "Port": "3306",
+  "Username": "root",
+  "Password": "t-tAq$C45qw45",
   "Database": "movies_recommendations_db"
 }
