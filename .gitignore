@@ -368,3 +368,7 @@ FodyWeavers.xsd
 /Properties/Resources.Designer.cs
 /MVVM/Model/TMDBApi/Properties/Resources.Designer.cs
 /Properties/Resources.resx
+/MoviesRecommendationsApp/Datas/Access/EmailData.json
+/MoviesRecommendationsApp/Properties/Resources.Designer.cs
+/TMDBApi/Properties/Resources.Designer.cs
+/TMDBApi/Properties/Resources.resx
