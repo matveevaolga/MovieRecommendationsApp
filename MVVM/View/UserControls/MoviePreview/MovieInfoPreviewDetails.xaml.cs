@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using TMDBApi;
 using System.Windows.Shapes;
 
 namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
@@ -20,9 +21,21 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
     /// </summary>
     public partial class MovieInfoPreviewDetails : UserControl
     {
-        public MovieInfoPreviewDetails()
+        public MovieInfoPreviewDetails(string overview,
+            List<int> genreIds, double popularity)
         {
+            DataContext = this;
             InitializeComponent();
+            movieOverview.Content = overview;
+            moviePopularity.Content = Math.Round(popularity, 2);
+            Label label;
+            foreach (int genreId in genreIds) 
+            {
+                label = new Label();
+                label.Style = (Style)Application.Current.Resources["FlatLabel"];
+                label.Content = Movie.GetGenreById(genreId);
+                movieGenres.Children.Add(label);
+            }
         }
     }
 }
