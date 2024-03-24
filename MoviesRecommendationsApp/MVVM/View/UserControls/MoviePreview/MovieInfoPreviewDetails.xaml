@@ -17,10 +17,14 @@
             <Button Style="{StaticResource FavouritesButton}" Grid.Row="0"
                     Template="{StaticResource FavouritesButtonTemplate}"
                     HorizontalAlignment="Right" Height="35" Width="35"/>
-            <Label Style="{StaticResource FlatLabel}" Content="Описание" Grid.Row="1"/>
-            <Label Style="{StaticResource FlatLabel}" Content="Жанры" Grid.Row="2"/>
-            <Label Style="{StaticResource FlatLabel}" Content="Рейтинг" Grid.Row="3"
-                   HorizontalContentAlignment="Right"/>
+            <Label Style="{StaticResource FlatLabel}" Content="Описание" Grid.Row="1"
+                   x:Name="movieOverview"/>
+            <StackPanel Grid.Row="2">
+                <Label Style="{StaticResource FlatLabel}" Content="Жанры"/>
+                <WrapPanel Orientation="Horizontal" x:Name="movieGenres"/>
+            </StackPanel>
+            <Label Style="{StaticResource FlatLabel}" Content="Популярность" Grid.Row="3"
+                   HorizontalContentAlignment="Right" x:Name="moviePopularity"/>
         </Grid>
     </Border>
 </UserControl>

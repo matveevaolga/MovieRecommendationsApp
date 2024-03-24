@@ -361,10 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/Datas/Access/ServerData.json
-/Datas/Access/EmailData.json
-/MVVM/Model/TMDBApi/Properties/Resources.resx
-/Properties/Resources.resx
-/Properties/Resources.Designer.cs
-/MVVM/Model/TMDBApi/Properties/Resources.Designer.cs
-/Properties/Resources.resx
+/MoviesRecommendationsApp/Datas/Access/EmailData.json
+/MoviesRecommendationsApp/Properties/Resources.Designer.cs
+/TMDBApi/Properties/Resources.Designer.cs
+/TMDBApi/Properties/Resources.resx

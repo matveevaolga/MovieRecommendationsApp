@@ -34,8 +34,8 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices
             var page1 = ApiQueriesProcessing.GetPageWithMovies(1).Result;
             foreach (Movie movie in page1.Results)
             {
-                MovieInfoPreview movieInfoPreview = new MovieInfoPreview(this, movie.Title,
-                    movie.ReleaseDate);
+                var uri = movie.GetPosterUri();
+                MovieInfoPreview movieInfoPreview = new MovieInfoPreview(this, movie);
                 movieInfoPreview.Margin = new Thickness(5);
                 movieInfoPreview.Height = 300;
                 movieInfoPreview.Width = 300;

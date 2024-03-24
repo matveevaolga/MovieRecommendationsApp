@@ -9,7 +9,7 @@
     <Border Style="{StaticResource InnerLightBorder}" CornerRadius="20"
             x:Name="mainBorder" MouseLeave="HideDetails">
         <StackPanel Margin="15">
-            <Image x:Name="picture" Source="{StaticResource DefaultImage}"
+            <Image x:Name="picture" Source="{Binding MovieImage}"
                    Height="200" Width="270">
             </Image>
             <Popup x:Name="popupContent" IsOpen="{Binding OpenPopup}"
@@ -33,8 +33,8 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Label Content="Тип" HorizontalAlignment="Left" Grid.Column="0"
-                               Style="{StaticResource FlatLabel}"/>
+                        <Label Content="Рейтинг" HorizontalAlignment="Left" Grid.Column="0"
+                               Style="{StaticResource FlatLabel}" x:Name="voteAverage"/>
                         <Label Content="Год" HorizontalAlignment="Left" Grid.Column="1"
                                Style="{StaticResource FlatLabel}" x:Name="releaseDate"/>
                     </Grid>
