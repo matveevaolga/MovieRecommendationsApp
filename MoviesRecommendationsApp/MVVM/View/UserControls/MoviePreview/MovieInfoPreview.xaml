@@ -33,8 +33,12 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Label Content="Рейтинг" HorizontalAlignment="Left" Grid.Column="0"
-                               Style="{StaticResource FlatLabel}" x:Name="voteAverage"/>
+                        <StackPanel Grid.Column="0">
+                            <Label Content="Рейтинг" HorizontalAlignment="Left"
+                               Style="{StaticResource FlatLabel}" FontSize="15"/>
+                            <Label x:Name="voteAverage" HorizontalAlignment="Left"
+                               Style="{StaticResource FlatLabel}"/>
+                        </StackPanel>
                         <Label Content="Год" HorizontalAlignment="Left" Grid.Column="1"
                                Style="{StaticResource FlatLabel}" x:Name="releaseDate"/>
                     </Grid>
