@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview;
+using TMDBApi;
 
 namespace MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices
 {
@@ -21,20 +22,25 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices
     /// </summary>
     public partial class HomeUC : UserControl
     {
-        public string guessedImage { get; set; }
         public HomeUC()
         {
             InitializeComponent();
-            guessedImage = "D:\\C#projects\\MovieRecommendationsApp\\Datas\\Images\\logInImage.jpg";
-            for (int i = 0; i < 13; i++)
+            FillMovieContainer();
+            DataContext = this;
+        }
+
+        async void FillMovieContainer()
+        {
+            var page1 = ApiQueriesProcessing.GetPageWithMovies(1).Result;
+            foreach (Movie movie in page1.Results)
             {
-                MovieInfoPreview movieInfoPreview = new MovieInfoPreview(this);
+                var uri = movie.GetPosterUri();
+                MovieInfoPreview movieInfoPreview = new MovieInfoPreview(this, movie);
                 movieInfoPreview.Margin = new Thickness(5);
                 movieInfoPreview.Height = 300;
                 movieInfoPreview.Width = 300;
                 moviesContainer.Children.Add(movieInfoPreview);
             }
-            DataContext = this;
         }
     }
 }

@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TMDBApi;
 
 namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
 {
@@ -25,7 +26,6 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
     /// </summary>
     public partial class MovieInfoPreview : UserControl, INotifyPropertyChanged
     {
-        MovieInfoPreviewDetails details;
         HomeUC caller;
         public MovieInfoPreviewDetails tipPopup { get; set; }
         bool openPopup;
@@ -35,14 +35,19 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
             set
             { openPopup = value; OnPropertyChanged("OpenPopup"); }
         }
-        public MovieInfoPreview(object caller)
+        public BitmapImage MovieImage { get; init; }
+        public MovieInfoPreview(object caller, Movie movie)
         {
-            details = new MovieInfoPreviewDetails();
             this.caller = (HomeUC)caller;
             InitializeComponent();
             OpenPopup = false;
-            tipPopup = new MovieInfoPreviewDetails();
             DataContext = this;
+            movieTitle.Content = movie.Title;
+            voteAverage.Content = Math.Round(movie.VoteAverage, 2);
+            releaseDate.Content = movie.ReleaseDate;
+            tipPopup = new MovieInfoPreviewDetails(movie.Overview,
+                movie.GenreIds, movie.Popularity);
+            MovieImage = new BitmapImage(movie.GetPosterUri());
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

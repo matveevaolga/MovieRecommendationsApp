@@ -4,7 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:MovieRecommendationsApp"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             StartupUri="MVVM/View/Authorization.xaml">
+             StartupUri="MVVM/View/CreatingDatabase.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -25,7 +25,7 @@
                     </Style>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-            <BitmapImage x:Key="DefaultImage" UriSource="Datas/Images/logInImage.jpg" />
+            <BitmapImage x:Key="DefaultImage" UriSource="Datas/Images/logInImage.jpg"/>
             <ControlTemplate TargetType="Button"
                              x:Key="ButtonTemplate">
                 <Border Name="border"
@@ -89,6 +89,11 @@
                 <Setter Property="FontSize" Value="50"></Setter>
                 <Setter Property="Foreground" Value="#F4EEE0"></Setter>
             </Style>
+            <Style TargetType="TextBlock" x:Key="TitleTextBlock" 
+                   BasedOn="{StaticResource MaterialDesignTextBlock}">
+                <Setter Property="FontSize" Value="50"></Setter>
+                <Setter Property="Foreground" Value="#F4EEE0"></Setter>
+            </Style>
             <Style TargetType="Border" x:Key="LogInBorder">
                 <Setter Property="CornerRadius" Value="50"/>
                 <Setter Property="BorderThickness" Value="5"/>
@@ -116,7 +121,8 @@
                                     </Border>
                                     <Border Height="550" Width="800">
                                         <Border.Background>
-                                            <ImageBrush ImageSource="{StaticResource DefaultImage}" Stretch="Fill" Opacity="0.25"/>
+                                            <ImageBrush ImageSource="{StaticResource DefaultImage}"
+                                                        Stretch="Fill" Opacity="0.25"/>
                                         </Border.Background>
                                     </Border>
                                 </Grid>

@@ -11,12 +11,21 @@ namespace MovieRecommendationsApp.MVVM.Model
     {
         MySqlConnection connection;
         string connectionString = "server={0};port={1};username={2};password={3};database={4}";
+        string connectionWithoutDB = "server={0};port={1};username={2};password={3}";
 
-        public DBConnection()
+        public DBConnection(bool isDataBaseCreated=true)
         {
             JsonParsing.ServerData serverData = JsonParsing.ParseServer();
-            connection = new MySqlConnection(string.Format(connectionString, serverData.Server, serverData.Port,
-                serverData.Username, serverData.Password, serverData.Database));
+            if (isDataBaseCreated)
+            {
+                connection = new MySqlConnection(string.Format(connectionString, serverData.Server,
+                    serverData.Port, serverData.Username, serverData.Password, serverData.Database));
+            }
+            else
+            {
+                connection = new MySqlConnection(string.Format(connectionWithoutDB,
+                    serverData.Server, serverData.Port, serverData.Username, serverData.Password));
+            }
         }
 
         public void OpenConnection()

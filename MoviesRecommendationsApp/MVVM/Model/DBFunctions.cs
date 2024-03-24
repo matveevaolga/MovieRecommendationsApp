@@ -4,6 +4,7 @@ using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Text;
@@ -24,6 +25,15 @@ namespace MovieRecommendationsApp.MVVM.Model
             cursor = new MySqlDataAdapter();
             rm = new ResourceManager("FormProject.Properties.Resources",
                 typeof(DBFunctions).Assembly);
+        }
+
+        public static void CreateLocalDB()
+        {
+            string sript = File.ReadAllText(@"../../../Datas/Access/CreateLocalDBScript.txt");
+            DBConnection connection = new DBConnection(false);
+            connection.OpenConnection();
+            MySqlCommand createDB = new MySqlCommand(sript, connection.GetConnection());
+            createDB.ExecuteNonQuery();
         }
 
         public bool LoginExists(string login)
