@@ -1,4 +1,5 @@
 ﻿using MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices;
+using MoviesRecommendationsApp.MVVM.View.UserControls.MovieFullInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,7 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
     public partial class MovieInfoPreview : UserControl, INotifyPropertyChanged
     {
         HomeUC caller;
+        Movie movie;
         public MovieInfoPreviewDetails tipPopup { get; set; }
         bool openPopup;
         public bool OpenPopup
@@ -48,6 +50,7 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
             tipPopup = new MovieInfoPreviewDetails(movie.Overview,
                 movie.GenreIds, movie.Popularity);
             MovieImage = new BitmapImage(movie.GetPosterUri());
+            this.movie = movie;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -68,7 +71,7 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
             Window activeWindow = Application.Current.Windows.
                 OfType<Window>().SingleOrDefault(x => x.IsActive);
             Point mousePoint = Mouse.GetPosition(activeWindow);
-            if (activeWindow.WindowState == WindowState.Maximized ||
+            if (activeWindow != null && activeWindow.WindowState == WindowState.Maximized ||
                 (mousePoint.Y + 200f <= Application.Current.MainWindow.ActualHeight &&
                  mousePoint.Y - 330f >= 0))
             {
@@ -88,6 +91,13 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
                 .Select(f => f.Parent)
                 .OfType<Popup>()
                 .Where(p => p.IsOpen).ToList();
+        }
+
+        private async void GoToMoviePage(object sender, RoutedEventArgs e)
+        {
+            // Асинхронные методы не должны всегда возвращать Task?
+            MovieDetails details = await ApiQueriesProcessing.GetMovieDetails(movie.Id);
+            caller.Content = new MoviePage(movie, details);
         }
     }
 }
