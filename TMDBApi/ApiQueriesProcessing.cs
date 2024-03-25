@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Text.Json;
 using System.Resources;
+using System.Windows.Controls;
 
 
 namespace TMDBApi
@@ -52,6 +53,22 @@ namespace TMDBApi
                 pageWithMovies = JsonSerializer.Deserialize<PageWithMovies>(body, options);
             }
             return pageWithMovies;
+        }
+
+        async public static Task<MovieDetails> GetMovieDetails(int movieId)
+        {
+            string query = string.Format("https://api.themoviedb.org/3/movie/{0}?api_key={1}",
+                movieId, resourceManager.GetString("ApiKey"));
+            var client = new HttpClient();
+            var request = FormRequest(query);
+            MovieDetails movieDetails;
+            using (var response = await client.SendAsync(request).ConfigureAwait(false))
+            {
+                response.EnsureSuccessStatusCode();
+                var body = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                movieDetails = JsonSerializer.Deserialize<MovieDetails>(body, options);
+            }
+            return movieDetails;
         }
     }
 }
