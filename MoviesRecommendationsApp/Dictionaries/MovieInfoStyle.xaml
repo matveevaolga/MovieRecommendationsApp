@@ -13,6 +13,30 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="Label" x:Key="DarkFlatLabel">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#1c0d29" Offset="0"/>
+                    <GradientStop Color="#4d3a16" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="DarkTextBlock">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#1c0d29" Offset="0"/>
+                    <GradientStop Color="#4d3a16" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <ControlTemplate TargetType="Button" x:Key="FlatButtonTemplate">
         <Border BorderBrush="{TemplateBinding BorderBrush}"
                 Height="{TemplateBinding Height}"

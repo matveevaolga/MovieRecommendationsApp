@@ -26,13 +26,13 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
         {
             DataContext = this;
             InitializeComponent();
-            movieOverview.Content = overview;
+            movieOverview.Text = overview;
             moviePopularity.Content = Math.Round(popularity, 2);
             Label label;
             foreach (int genreId in genreIds) 
             {
                 label = new Label();
-                label.Style = (Style)Application.Current.Resources["FlatLabel"];
+                label.Style = (Style)Application.Current.Resources["DarkFlatLabel"];
                 label.Content = Movie.GetGenreById(genreId);
                 movieGenres.Children.Add(label);
             }

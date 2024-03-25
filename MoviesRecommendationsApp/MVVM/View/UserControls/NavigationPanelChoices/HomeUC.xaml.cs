@@ -37,7 +37,7 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices
                 var uri = movie.GetPosterUri();
                 MovieInfoPreview movieInfoPreview = new MovieInfoPreview(this, movie);
                 movieInfoPreview.Margin = new Thickness(5);
-                movieInfoPreview.Height = 300;
+                movieInfoPreview.Height = 320;
                 movieInfoPreview.Width = 300;
                 moviesContainer.Children.Add(movieInfoPreview);
             }
