@@ -25,8 +25,8 @@
                 <Button Style="{StaticResource FlatButton}" Content="Название"
                         HorizontalContentAlignment="Left" Grid.Row="0"
                         Template="{StaticResource FlatButtonTemplate}"
-                        HorizontalAlignment="Left" Name="movieTitle"
-                        MouseEnter="ShowDetails"/>
+                        HorizontalAlignment="Left" x:Name="movieTitle"
+                        MouseEnter="ShowDetails" Click="GoToMoviePage"/>
                 <Grid Grid.Row="1">
                     <Grid>
                         <Grid.ColumnDefinitions>
