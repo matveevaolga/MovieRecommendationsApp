@@ -13,6 +13,18 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="TextBlock" x:Key="FlatTextBlock">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#784DFD" Offset="0"/>
+                    <GradientStop Color="#FFC047" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style TargetType="Label" x:Key="DarkFlatLabel">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="FontSize" Value="20"/>
@@ -33,6 +45,30 @@
                 <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
                     <GradientStop Color="#3a0852" Offset="0"/>
                     <GradientStop Color="#63184f" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="LightTextBlock">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#ccc3d6" Offset="0"/>
+                    <GradientStop Color="#F4EEE0" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="Label" x:Key="LightLabel">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#ccc3d6" Offset="0"/>
+                    <GradientStop Color="#F4EEE0" Offset="1"/>
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
