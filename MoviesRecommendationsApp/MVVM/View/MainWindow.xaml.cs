@@ -65,7 +65,9 @@ namespace MovieRecommendationsApp.MVVM.View
 
         private void HomeChosen(object sender, RoutedEventArgs e)
         {
-            NavigationPanelChoice.Content = new HomeUC();
+            HomeUC homeUC = new HomeUC();
+            homeUC.FillMovieContainer();
+            NavigationPanelChoice.Content = homeUC;
         }
         private void AccountChosen(object sender, RoutedEventArgs e)
         {

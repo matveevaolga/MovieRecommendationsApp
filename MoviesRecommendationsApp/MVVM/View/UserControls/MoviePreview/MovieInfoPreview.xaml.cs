@@ -44,13 +44,20 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
             InitializeComponent();
             OpenPopup = false;
             DataContext = this;
-            movieTitle.Content = movie.Title;
+            movieTitle.Content = GetTitle(movie.Title);
             voteAverage.Content = Math.Round(movie.VoteAverage, 2);
             releaseDate.Content = movie.ReleaseDate;
             tipPopup = new MovieInfoPreviewDetails(movie.Overview,
                 movie.GenreIds, movie.Popularity);
             MovieImage = new BitmapImage(movie.GetPosterUri());
             this.movie = movie;
+        }
+        string GetTitle(string title)
+        {
+            if (title.Length >= 19)
+                return title[..18] + "...";
+            else
+                return title;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

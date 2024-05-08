@@ -365,3 +365,4 @@ FodyWeavers.xsd
 /MoviesRecommendationsApp/Properties/Resources.Designer.cs
 /TMDBApi/Properties/Resources.Designer.cs
 /TMDBApi/Properties/Resources.resx
+/MoviesRecommendationsApp/Datas/Access/ServerData.json
