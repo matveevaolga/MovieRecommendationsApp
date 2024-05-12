@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices;
 using MovieRecommendationsApp.MVVM.View.UserControls;
+using System.Security.Policy;
 
 namespace MovieRecommendationsApp.MVVM.View
 {
@@ -84,6 +85,33 @@ namespace MovieRecommendationsApp.MVVM.View
         private void FilterChosen(object sender, RoutedEventArgs e)
         {
             NavigationPanelChoice.Content = new HomeUC();
+        }
+
+        private void ChangeTheme(object sender, RoutedEventArgs e)
+        {
+            var dark = new Uri(@"Dictionaries/DarkTheme.xaml", UriKind.Relative);
+            var light = new Uri(@"Dictionaries/LightTheme.xaml", UriKind.Relative);
+
+            if ((string)changingThemeButton.Tag == "Moon")
+            {
+                VisualStateManager.GoToState(changingThemeButton, "ToSun", false);
+                changingThemeButton.Tag = "Sun";
+                ChangeThemeDictionary(light, dark);
+            }
+            else
+            {
+                VisualStateManager.GoToState(changingThemeButton, "ToMoon", false);
+                changingThemeButton.Tag = "Moon";
+                ChangeThemeDictionary(dark, light);
+            }
+        }
+
+        void ChangeThemeDictionary(Uri add, Uri remove)
+        {
+            ResourceDictionary? addDict = Application.LoadComponent(add) as ResourceDictionary;
+            ResourceDictionary? removeDict = Application.LoadComponent(remove) as ResourceDictionary;
+            Application.Current.Resources.MergedDictionaries.Remove(removeDict);
+            Application.Current.Resources.MergedDictionaries.Add(addDict);
         }
     }
 }

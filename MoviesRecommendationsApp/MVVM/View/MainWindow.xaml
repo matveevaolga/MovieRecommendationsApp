@@ -18,28 +18,36 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Border Grid.Column="0" CornerRadius="5 0 0 5" Style="{StaticResource InnerBorder}">
-                <StackPanel Margin="0 30 0 0">
-                    <RadioButton Foreground="#07F3C0" Content="Главная"
+                <DockPanel>
+                    <Button Style="{DynamicResource ChangingThemeButtonStyle}"
+                            Template="{StaticResource ChangingThemeButtonTemplate}"
+                            Height="50" Width="50" HorizontalAlignment="Left"
+                            DockPanel.Dock="Bottom" Margin="20"
+                            x:Name="changingThemeButton" Tag="Moon"
+                            Click="ChangeTheme"/>
+                    <StackPanel Margin="0 30 0 0">
+                        <RadioButton Foreground="#07F3C0" Content="Главная"
                                  Style="{StaticResource NavigationButton}"
                                  Template="{StaticResource HomeButtonTemplate}"
                                  Click="HomeChosen"/>
-                    <RadioButton Foreground="#784DFD" Content="Профиль"
+                        <RadioButton Foreground="#784DFD" Content="Профиль"
                                  Style="{StaticResource NavigationButton}"
                                  Template="{StaticResource AccountButtonTemplate}"
                                  Click="AccountChosen"/>
-                    <RadioButton Foreground="#F8539B" Content="Избранное"
+                        <RadioButton Foreground="#F8539B" Content="Избранное"
                                  Style="{StaticResource NavigationButton}"
                                  Template="{StaticResource FavouritesRadioButtonTemplate}"
                                  Click="FavouritesChosen"/>
-                    <RadioButton Foreground="#FFC047" Content="Сортировка"
+                        <RadioButton Foreground="#FFC047" Content="Сортировка"
                                  Style="{StaticResource NavigationButton}"
                                  Template="{StaticResource SortButtonTemplate}"
                                  Click="SortChosen"/>
-                    <RadioButton Foreground="#4ADAEC" Content="Фильтрация"
+                        <RadioButton Foreground="#4ADAEC" Content="Фильтрация"
                                  Style="{StaticResource NavigationButton}"
                                  Template="{StaticResource FilterButtonTemplate}"
                                  Click="FilterChosen"/>
-                </StackPanel>
+                    </StackPanel>
+                </DockPanel>
             </Border>
             <Border Grid.Column="1" CornerRadius="0 5 5 0" Style="{StaticResource InnerBorder}">
                 <Grid>

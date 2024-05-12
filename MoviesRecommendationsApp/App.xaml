@@ -8,6 +8,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Dictionaries\DarkTheme.xaml"/>
                 <ResourceDictionary Source="Dictionaries\MenuButtons.xaml"/>
                 <ResourceDictionary Source="Dictionaries\MovieInfoStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
