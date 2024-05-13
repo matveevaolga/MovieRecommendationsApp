@@ -11,13 +11,13 @@
         Loaded="NewLogInProcessing" Height="700" Width="1300"
         Background="Transparent" AllowsTransparency="True" WindowStyle="None"
         MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen">
-    <Border Style="{StaticResource MainBorder}">
+    <Border Style="{DynamicResource MainBorder}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" CornerRadius="5 0 0 5" Style="{StaticResource InnerBorder}">
+            <Border Grid.Column="0" CornerRadius="5 0 0 5" Style="{DynamicResource InnerBorder}">
                 <DockPanel>
                     <Button Style="{DynamicResource ChangingThemeButtonStyle}"
                             Template="{StaticResource ChangingThemeButtonTemplate}"
@@ -49,7 +49,7 @@
                     </StackPanel>
                 </DockPanel>
             </Border>
-            <Border Grid.Column="1" CornerRadius="0 5 5 0" Style="{StaticResource InnerBorder}">
+            <Border Grid.Column="1" CornerRadius="0 5 5 0" Style="{DynamicResource InnerBorder}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"></RowDefinition>
@@ -73,16 +73,16 @@
                     </Grid>
                     <DockPanel Grid.Row="1" LastChildFill="True">
                         <Button DockPanel.Dock="Right"
-                                Style="{StaticResource ButtonStyle}"
+                                Style="{DynamicResource ButtonStyle}"
                                 Content="Поиск" Margin="0 0 5 0"
-                                Template="{StaticResource ButtonTemplate}"
+                                Template="{DynamicResource ButtonTemplate}"
                                 Width="100"/>
                         <materialDesign:PackIcon Kind="Magnify" DockPanel.Dock="Left"
                                                  Foreground="#8A16C1" Width="50"
                                                  Height="40"
                                                  HorizontalAlignment="Stretch" 
                                                  VerticalAlignment="Stretch"/>
-                        <TextBox Margin="5 0 0 0" Style="{StaticResource TextBoxWithHint}" x:Name="loginTextBox"
+                        <TextBox Margin="5 0 0 0" Style="{DynamicResource TextBoxWithHint}" x:Name="loginTextBox"
                         materialDesign:HintAssist.Hint="Что хотите найти?" FontSize="25"/>
                     </DockPanel>
                     <ContentControl Grid.Row="2" x:Name="NavigationPanelChoice"/>

@@ -21,15 +21,15 @@ namespace MovieRecommendationsApp
     /// </summary>
     public partial class Authorization : Window, INotifyPropertyChanged
     {
-        string loginHint;
-        public string LoginHint
+        string? loginHint;
+        public string? LoginHint
         {
             get { return loginHint; }
             set
             { loginHint = value; OnPropertyChanged("LoginHint"); }
         }
-        string passwordHint;
-        public string PasswordHint
+        string? passwordHint;
+        public string? PasswordHint
         {
             get { return passwordHint; }
             set

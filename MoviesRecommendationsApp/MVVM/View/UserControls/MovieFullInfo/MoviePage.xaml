@@ -17,14 +17,14 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Border Style="{StaticResource InnerDecoreBorder}" 
+                <Border Style="{DynamicResource InnerDecoreBorder}" 
                     Margin="10" Grid.Column="0" Width="350" Height="450" VerticalAlignment="Top"
                     x:Name="pictureBorder">
                     <Border.Background>
                         <ImageBrush x:Name="picture" ImageSource="{Binding MovieImage}" Stretch="Fill"/>
                     </Border.Background>
                 </Border>
-                <Border Style="{StaticResource InnerLightBorder}" Margin="20 10 10 10"
+                <Border Style="{DynamicResource InnerLightBorder}" Margin="20 10 10 10"
                     VerticalAlignment="Top" Grid.Column="1" x:Name="mainInfoBorder"
                     Height="{Binding ElementName=pictureBorder, Path=ActualHeight}">
                     <ScrollViewer VerticalScrollBarVisibility="Hidden" Margin="10"
@@ -44,25 +44,25 @@
                                 <RowDefinition Height="Auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             <TextBlock TextWrapping="Wrap" Text="{Binding Title}" Grid.Row="0"
-                            Style="{StaticResource FlatTextBlock}" FontSize="40"
+                            Style="{DynamicResource FlatTextBlock}" FontSize="40"
                                    DataContext="{Binding Movie}"/>
-                            <Label Style="{StaticResource FlatLabel}" FontSize="30"
+                            <Label Style="{DynamicResource FlatLabel}" FontSize="30"
                             Content="Жанры" Grid.Row="1"/>
                             <WrapPanel Orientation="Horizontal" x:Name="movieGenres" Grid.Row="2"/>
-                            <Label Style="{StaticResource FlatLabel}" FontSize="30"
+                            <Label Style="{DynamicResource FlatLabel}" FontSize="30"
                             Content="Дата выхода" Grid.Row="3"/>
-                            <Label Content="{Binding ReleaseDate}" Style="{StaticResource LightLabel}"
+                            <Label Content="{Binding ReleaseDate}" Style="{DynamicResource LightLabel}"
                                FontSize="25" Grid.Row="4" DataContext="{Binding Movie}"/>
-                            <Label Content="Посмотрело" Grid.Row="5" Style="{StaticResource FlatLabel}" FontSize="30"/>
+                            <Label Content="Посмотрело" Grid.Row="5" Style="{DynamicResource FlatLabel}" FontSize="30"/>
                             <Label DataContext="{Binding MovieDetails}" Content="{Binding VoteCount}" Grid.Row="6"
-                               Style="{StaticResource LightLabel}" FontSize="25"/>
-                            <Label Content="Рейтинг" Grid.Row="7" Style="{StaticResource FlatLabel}" FontSize="30"/>
+                               Style="{DynamicResource LightLabel}" FontSize="25"/>
+                            <Label Content="Рейтинг" Grid.Row="7" Style="{DynamicResource FlatLabel}" FontSize="30"/>
                             <Label DataContext="{Binding MovieDetails}" Content="{Binding VoteAverage}" Grid.Row="8"
-                               Style="{StaticResource LightLabel}" FontSize="25"/>
-                            <Label Content="Описание" Style="{StaticResource FlatLabel}"
+                               Style="{DynamicResource LightLabel}" FontSize="25"/>
+                            <Label Content="Описание" Style="{DynamicResource FlatLabel}"
                             FontSize="30" Grid.Row="9"/>
                             <TextBlock Margin="0 10 0 0" TextWrapping="Wrap" FontSize="25" DataContext="{Binding Movie}"
-                        Text="{Binding Overview}" Style="{StaticResource LightTextBlock}" Grid.Row="10"/>
+                        Text="{Binding Overview}" Style="{DynamicResource LightTextBlock}" Grid.Row="10"/>
                         </Grid>
                     </ScrollViewer>
                 </Border>
@@ -73,19 +73,19 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource InnerLightBorder}">
+                <Border Grid.Column="0" Grid.ColumnSpan="2" Style="{DynamicResource InnerLightBorder}">
                     <Grid Margin="10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Label Style="{StaticResource FlatLabel}" FontSize="30"
+                        <Label Style="{DynamicResource FlatLabel}" FontSize="30"
                                Content="Компании" Grid.Row="0"/>
                         <WrapPanel x:Name="productionCompanies" Orientation="Horizontal"
                                    Grid.Row="1" Width="{Binding ActualWidth, ElementName=mainInfoBorder}"/>
                     </Grid>
                 </Border>
-                <Border Grid.Column="2" Style="{StaticResource InnerDecoreBorder}"
+                <Border Grid.Column="2" Style="{DynamicResource InnerDecoreBorder}"
                         Margin="20 0 0 0" BorderThickness="0">
                     <ScrollViewer VerticalScrollBarVisibility="Hidden">
                         <Grid Margin="10">
@@ -94,12 +94,12 @@
                                 <RowDefinition Height="Auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             <StackPanel Orientation="Horizontal" Grid.Row="0">
-                                <Label Style="{StaticResource LightLabel}" Content="Бюджет" FontSize="25"/>
-                                <Label Style="{StaticResource LightLabel}" Content="{Binding Budget}" FontSize="25"/>
+                                <Label Style="{DynamicResource LightLabel}" Content="Бюджет" FontSize="25"/>
+                                <Label Style="{DynamicResource LightLabel}" Content="{Binding Budget}" FontSize="25"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Grid.Row="1">
-                                <Label Style="{StaticResource LightLabel}" Content="Выручка" FontSize="25"/>
-                                <Label Style="{StaticResource LightLabel}" Content="{Binding Revenue}" FontSize="25"/>
+                                <Label Style="{DynamicResource LightLabel}" Content="Выручка" FontSize="25"/>
+                                <Label Style="{DynamicResource LightLabel}" Content="{Binding Revenue}" FontSize="25"/>
                             </StackPanel>
                         </Grid>
                     </ScrollViewer>

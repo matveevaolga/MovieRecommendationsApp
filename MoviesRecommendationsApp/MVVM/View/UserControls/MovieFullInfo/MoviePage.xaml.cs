@@ -42,7 +42,7 @@ namespace MoviesRecommendationsApp.MVVM.View.UserControls.MovieFullInfo
             foreach (int genreId in Movie.GenreIds)
             {
                 label = new Label();
-                label.Style = (Style)Application.Current.Resources["LightLabel"];
+                label.SetResourceReference(Label.StyleProperty, "LightLabel");
                 label.FontSize = 25;
                 label.Content = Movie.GetGenreById(genreId);
                 movieGenres.Children.Add(label);
@@ -54,7 +54,7 @@ namespace MoviesRecommendationsApp.MVVM.View.UserControls.MovieFullInfo
             foreach (Company company in MovieDetails.ProductionCompanies)
             {
                 label = new Label();
-                label.Style = (Style)Application.Current.Resources["LightLabel"];
+                label.SetResourceReference(Label.StyleProperty, "LightLabel");
                 label.FontSize = 25;
                 label.Content = company.Name + ", " + company.OriginCountry;
                 productionCompanies.Children.Add(label);

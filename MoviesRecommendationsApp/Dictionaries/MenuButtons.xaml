@@ -119,7 +119,6 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Cursor" Value="Hand"/>
                 <Setter Property="Margin" Value="0 0 0 5"/>
-                <Setter Property="Background" Value="#1b1448"/>
                 <Setter Property="BorderBrush" Value="{Binding Path=Foreground,
                     RelativeSource={RelativeSource Self}}"/>
             </Trigger>
