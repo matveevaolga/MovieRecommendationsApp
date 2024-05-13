@@ -11,37 +11,45 @@
         Loaded="NewLogInProcessing" Height="700" Width="1300"
         Background="Transparent" AllowsTransparency="True" WindowStyle="None"
         MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen">
-    <Border Style="{StaticResource MainBorder}">
+    <Border Style="{DynamicResource MainBorder}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" CornerRadius="5 0 0 5" Style="{StaticResource InnerBorder}">
-                <StackPanel Margin="0 30 0 0">
-                    <RadioButton Foreground="#07F3C0" Content="Главная"
+            <Border Grid.Column="0" CornerRadius="5 0 0 5" Style="{DynamicResource InnerBorder}">
+                <DockPanel>
+                    <Button Style="{DynamicResource ChangingThemeButtonStyle}"
+                            Template="{StaticResource ChangingThemeButtonTemplate}"
+                            Height="50" Width="50" HorizontalAlignment="Left"
+                            DockPanel.Dock="Bottom" Margin="20"
+                            x:Name="changingThemeButton" Tag="Moon"
+                            Click="ChangeTheme"/>
+                    <StackPanel Margin="0 30 0 0">
+                        <RadioButton Foreground="#07F3C0" Content="Главная"
                                  Style="{StaticResource NavigationButton}"
                                  Template="{StaticResource HomeButtonTemplate}"
                                  Click="HomeChosen"/>
-                    <RadioButton Foreground="#784DFD" Content="Профиль"
+                        <RadioButton Foreground="#784DFD" Content="Профиль"
                                  Style="{StaticResource NavigationButton}"
                                  Template="{StaticResource AccountButtonTemplate}"
                                  Click="AccountChosen"/>
-                    <RadioButton Foreground="#F8539B" Content="Избранное"
+                        <RadioButton Foreground="#F8539B" Content="Избранное"
                                  Style="{StaticResource NavigationButton}"
                                  Template="{StaticResource FavouritesRadioButtonTemplate}"
                                  Click="FavouritesChosen"/>
-                    <RadioButton Foreground="#FFC047" Content="Сортировка"
+                        <RadioButton Foreground="#FFC047" Content="Сортировка"
                                  Style="{StaticResource NavigationButton}"
                                  Template="{StaticResource SortButtonTemplate}"
                                  Click="SortChosen"/>
-                    <RadioButton Foreground="#4ADAEC" Content="Фильтрация"
+                        <RadioButton Foreground="#4ADAEC" Content="Фильтрация"
                                  Style="{StaticResource NavigationButton}"
                                  Template="{StaticResource FilterButtonTemplate}"
                                  Click="FilterChosen"/>
-                </StackPanel>
+                    </StackPanel>
+                </DockPanel>
             </Border>
-            <Border Grid.Column="1" CornerRadius="0 5 5 0" Style="{StaticResource InnerBorder}">
+            <Border Grid.Column="1" CornerRadius="0 5 5 0" Style="{DynamicResource InnerBorder}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"></RowDefinition>
@@ -65,16 +73,16 @@
                     </Grid>
                     <DockPanel Grid.Row="1" LastChildFill="True">
                         <Button DockPanel.Dock="Right"
-                                Style="{StaticResource ButtonStyle}"
+                                Style="{DynamicResource ButtonStyle}"
                                 Content="Поиск" Margin="0 0 5 0"
-                                Template="{StaticResource ButtonTemplate}"
+                                Template="{DynamicResource ButtonTemplate}"
                                 Width="100"/>
                         <materialDesign:PackIcon Kind="Magnify" DockPanel.Dock="Left"
                                                  Foreground="#8A16C1" Width="50"
                                                  Height="40"
                                                  HorizontalAlignment="Stretch" 
                                                  VerticalAlignment="Stretch"/>
-                        <TextBox Margin="5 0 0 0" Style="{StaticResource TextBoxWithHint}" x:Name="loginTextBox"
+                        <TextBox Margin="5 0 0 0" Style="{DynamicResource TextBoxWithHint}" x:Name="loginTextBox"
                         materialDesign:HintAssist.Hint="Что хотите найти?" FontSize="25"/>
                     </DockPanel>
                     <ContentControl Grid.Row="2" x:Name="NavigationPanelChoice"/>
