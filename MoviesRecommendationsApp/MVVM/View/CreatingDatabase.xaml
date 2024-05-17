@@ -29,19 +29,19 @@
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
                 <TextBlock Text="Заполните для создания mysql базы данных
                        movies_recommendations_db на localhost" TextWrapping="Wrap"
-                       Style="{StaticResource TitleTextBlock}" FontSize="30"/>
-                <TextBox Style="{StaticResource TextBoxWithHint}" x:Name="serverPort"
+                       Style="{DynamicResource TitleTextBlock}" FontSize="30"/>
+                <TextBox Style="{DynamicResource TextBoxWithHint}" x:Name="serverPort"
                     materialDesign:HintAssist.Hint="Port"/>
-                <TextBox Style="{StaticResource TextBoxWithHint}" x:Name="serverUsername"
+                <TextBox Style="{DynamicResource TextBoxWithHint}" x:Name="serverUsername"
                     materialDesign:HintAssist.Hint="Username"/>
-                <TextBox Style="{StaticResource TextBoxWithHint}" x:Name="serverPassword"
+                <TextBox Style="{DynamicResource TextBoxWithHint}" x:Name="serverPassword"
                     materialDesign:HintAssist.Hint="Password"/>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Произошла ошибка" Style="{StaticResource TitleLabel}"
+                    <Label Content="Произошла ошибка" Style="{DynamicResource TitleLabel}"
                        FontSize="30" x:Name="errorMessage" Visibility="Collapsed"
                        Foreground="Red"/>
-                    <Button Style="{StaticResource ButtonStyle}" Content="Создать базу данных"
-                       Template="{StaticResource ButtonTemplate}"
+                    <Button Style="{DynamicResource ButtonStyle}" Content="Создать базу данных"
+                       Template="{DynamicResource ButtonTemplate}"
                        Width="260" Click="CreateDataBase"/>
                 </StackPanel>
             </StackPanel>

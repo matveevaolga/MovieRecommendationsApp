@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Border Style="{StaticResource InnerLightBorder}" CornerRadius="20"
+    <Border Style="{DynamicResource InnerLightBorder}" CornerRadius="20"
             x:Name="mainBorder" MouseLeave="HideDetails">
         <StackPanel Margin="15">
             <Image x:Name="picture" Source="{Binding MovieImage}"
@@ -22,9 +22,9 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Button Style="{StaticResource FlatButton}" Content="Название"
+                <Button Style="{DynamicResource FlatButton}" Content="Название"
                         HorizontalContentAlignment="Left" Grid.Row="0"
-                        Template="{StaticResource FlatButtonTemplate}"
+                        Template="{DynamicResource FlatButtonTemplate}"
                         HorizontalAlignment="Left" x:Name="movieTitle"
                         MouseEnter="ShowDetails" Click="GoToMoviePage"/>
                 <Grid Grid.Row="1">
@@ -35,12 +35,12 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
                             <Label Content="Рейтинг" HorizontalAlignment="Left"
-                               Style="{StaticResource FlatLabel}" FontSize="15"/>
+                               Style="{DynamicResource FlatLabel}" FontSize="15"/>
                             <Label x:Name="voteAverage" HorizontalAlignment="Left"
-                               Style="{StaticResource FlatLabel}"/>
+                               Style="{DynamicResource FlatLabel}"/>
                         </StackPanel>
                         <Label Content="Год" HorizontalAlignment="Left" Grid.Column="1"
-                               Style="{StaticResource FlatLabel}" x:Name="releaseDate"/>
+                               Style="{DynamicResource FlatLabel}" x:Name="releaseDate"/>
                     </Grid>
                 </Grid>
             </Grid>

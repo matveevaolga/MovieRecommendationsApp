@@ -27,11 +27,11 @@
                         Template="{StaticResource CloseTemplate}"/>
             </Grid>
             <StackPanel VerticalAlignment="Center" Margin="20 0 20 0" Grid.Row="1">
-                <Label Content="Авторизация" Style="{StaticResource TitleLabel}"/>
-                <TextBox Style="{StaticResource TextBoxWithHint}" x:Name="loginTextBox"
+                <Label Content="Авторизация" Style="{DynamicResource TitleLabel}"/>
+                <TextBox Style="{DynamicResource TextBoxWithHint}" x:Name="loginTextBox"
                         materialDesign:HintAssist.Hint="{Binding LoginHint,
                 UpdateSourceTrigger=PropertyChanged}" TextChanged="ResetTextBox"/>
-                <TextBox Style="{StaticResource TextBoxWithHint}" x:Name="passwordTextBox"
+                <TextBox Style="{DynamicResource TextBoxWithHint}" x:Name="passwordTextBox"
                         materialDesign:HintAssist.Hint="{Binding PasswordHint,
                 UpdateSourceTrigger=PropertyChanged}" TextChanged="ResetTextBox"/>
                 <Grid Margin="0 20 0 0">
@@ -41,14 +41,14 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Button Content="К регистрации" Grid.Column="0"
-                        Margin="10" Style="{StaticResource ButtonStyle}"
-                        Click="OpenRegistrationWindow" Template="{StaticResource ButtonTemplate}"/>
+                        Margin="10" Style="{DynamicResource ButtonStyle}"
+                        Click="OpenRegistrationWindow" Template="{DynamicResource ButtonTemplate}"/>
                     <Button Content="Войти" Grid.Column="1" Margin="10"
-                        Style="{StaticResource ButtonStyle}" Click="LogIn"
-                        Template="{StaticResource ButtonTemplate}"/>
+                        Style="{DynamicResource ButtonStyle}" Click="LogIn"
+                        Template="{DynamicResource ButtonTemplate}"/>
                     <Button Content="Забыли пароль?" Grid.Column="2" Margin="10"
-                        Style="{StaticResource ButtonStyle}" Click="OpenRestorePasswordWindow"
-                        Template="{StaticResource ButtonTemplate}"/>
+                        Style="{DynamicResource ButtonStyle}" Click="OpenRestorePasswordWindow"
+                        Template="{DynamicResource ButtonTemplate}"/>
                 </Grid>
             </StackPanel>
         </Grid>
