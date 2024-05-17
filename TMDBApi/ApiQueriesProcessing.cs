@@ -45,12 +45,16 @@ namespace TMDBApi
                 page, resourceManager.GetString("ApiKey"));
             var client = new HttpClient();
             var request = FormRequest(query);
-            PageWithMovies pageWithMovies;
+            PageWithMovies? pageWithMovies;
             using (var response = await client.SendAsync(request).ConfigureAwait(false))
             {
                 response.EnsureSuccessStatusCode();
                 var body = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 pageWithMovies = JsonSerializer.Deserialize<PageWithMovies>(body, options);
+                if (pageWithMovies == null ||
+                    pageWithMovies.Results == null ||
+                    pageWithMovies.Results.Count == 0)
+                    throw new IndexOutOfRangeException();
             }
             return pageWithMovies;
         }

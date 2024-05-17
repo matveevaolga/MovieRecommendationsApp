@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,8 +22,22 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices
     /// <summary>
     /// Логика взаимодействия для HomeUC.xaml
     /// </summary>
-    public partial class HomeUC : UserControl
+    public partial class HomeUC : UserControl, INotifyPropertyChanged
     {
+        int _pagePtr = 1;
+        public int PagePtr
+        {
+            get { return _pagePtr; }
+            private set
+            {
+                _pagePtr = value; OnPropertyChanged("PagePtr");
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
         public HomeUC()
         {
             InitializeComponent();
@@ -30,7 +46,9 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices
 
         public void FillMovieContainer()
         {
-            foreach (Movie movie in ApiQueriesProcessing.GetPageWithMovies(1).Result.Results)
+            PageWithMovies pageWithMovies = ApiQueriesProcessing.GetPageWithMovies(PagePtr).Result;
+            moviesContainer.Children.Clear();
+            foreach (Movie movie in pageWithMovies.Results)
             {
                 MovieInfoPreview movieInfoPreview = new MovieInfoPreview(this, movie);
                 movieInfoPreview.Margin = new Thickness(5);
@@ -38,6 +56,25 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices
                 movieInfoPreview.Width = 300;
                 moviesContainer.Children.Add(movieInfoPreview);
             }
+        }
+
+        private void ToNextPage(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                PagePtr++;
+                FillMovieContainer();
+            }
+            catch (IndexOutOfRangeException) { PagePtr--; }
+            catch (AggregateException) { PagePtr--; }
+            catch (Exception) { PagePtr--; }
+        }
+
+        private void ToPrevPage(object sender, RoutedEventArgs e)
+        {
+            if (PagePtr == 1) return;
+            PagePtr--;
+            FillMovieContainer();
         }
     }
 }
