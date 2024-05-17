@@ -27,16 +27,16 @@
                 Template="{StaticResource CloseTemplate}"/>
             </Grid>
             <StackPanel VerticalAlignment="Center" Margin="20 0 20 0" Grid.Row="1">
-                <Label Content="Регистрация" Style="{StaticResource TitleLabel}"/>
-                <TextBox Style="{StaticResource TextBoxWithHint}"
+                <Label Content="Регистрация" Style="{DynamicResource TitleLabel}"/>
+                <TextBox Style="{DynamicResource TextBoxWithHint}"
                         x:Name="loginTextBox" 
                         materialDesign:HintAssist.Hint="{Binding LoginHint,
                         UpdateSourceTrigger=PropertyChanged}" TextChanged="ResetTextBox"/>
-                <TextBox Style="{StaticResource TextBoxWithHint}" 
+                <TextBox Style="{DynamicResource TextBoxWithHint}" 
                         x:Name="passwordTextBox"
                         materialDesign:HintAssist.Hint="{Binding PasswordHint,
                 UpdateSourceTrigger=PropertyChanged}" TextChanged="ResetTextBox"/>
-                <TextBox Style="{StaticResource TextBoxWithHint}" 
+                <TextBox Style="{DynamicResource TextBoxWithHint}" 
                         x:Name="emailTextBox"
                         materialDesign:HintAssist.Hint="{Binding EmailHint,
                 UpdateSourceTrigger=PropertyChanged}" TextChanged="ResetTextBox"/>
@@ -46,12 +46,12 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Button Content="Зарегистрироваться" Grid.Column="0" 
-                        Margin="10" Style="{StaticResource ButtonStyle}"
-                        Click="SignUp" Template="{StaticResource ButtonTemplate}"/>
+                        Margin="10" Style="{DynamicResource ButtonStyle}"
+                        Click="SignUp" Template="{DynamicResource ButtonTemplate}"/>
                     <Button Content="К авторизации" Grid.Column="2"
                         Click="OpenAuthorizationWindow" Margin="10"
-                        Style="{StaticResource ButtonStyle}"
-                        x:Name="toAuthorization" Template="{StaticResource ButtonTemplate}"/>
+                        Style="{DynamicResource ButtonStyle}"
+                        x:Name="toAuthorization" Template="{DynamicResource ButtonTemplate}"/>
                 </Grid>
             </StackPanel>
         </Grid>

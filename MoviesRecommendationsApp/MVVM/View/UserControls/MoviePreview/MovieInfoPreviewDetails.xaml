@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview"
              mc:Ignorable="d" 
              Height="300" Width="330">
-    <Border Style="{StaticResource DetailsBorder}">
+    <Border Style="{DynamicResource DetailsBorder}" CornerRadius="5">
         <Grid Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="32"></RowDefinition>
@@ -19,7 +19,7 @@
             <Button Style="{StaticResource FavouritesButton}" Grid.Row="0"
                     Template="{StaticResource FavouritesButtonTemplate}"
                     HorizontalAlignment="Right" Height="35" Width="35"/>
-            <Label Style="{StaticResource FlatLabel}" Content="Описание" Grid.Row="1"
+            <Label Style="{DynamicResource FlatLabel}" Content="Описание" Grid.Row="1"
                    FontSize="23"/>
             <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Hidden">
                 <StackPanel Orientation="Vertical">
@@ -27,7 +27,7 @@
                            x:Name="movieOverview"/>
                 </StackPanel>
             </ScrollViewer>
-            <Label Style="{StaticResource FlatLabel}" FontSize="23"
+            <Label Style="{DynamicResource FlatLabel}" FontSize="23"
                    Content="Жанры" Grid.Row="3"/>
             <ScrollViewer Grid.Row="4" VerticalScrollBarVisibility="Hidden">
                 <StackPanel Orientation="Vertical">
@@ -35,7 +35,7 @@
                 </StackPanel>
             </ScrollViewer>
             <StackPanel Orientation="Horizontal" Grid.Row="5">
-                <Label Style="{StaticResource FlatLabel}" Content="Популярность"
+                <Label Style="{DynamicResource FlatLabel}" Content="Популярность"
                    HorizontalContentAlignment="Right" FontSize="23"/>
                 <Label Style="{StaticResource DarkFlatLabel}"
                     HorizontalContentAlignment="Right" x:Name="moviePopularity"/>
