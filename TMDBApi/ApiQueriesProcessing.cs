@@ -21,6 +21,23 @@ namespace TMDBApi
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase
         };
 
+        public static Dictionary<string, string> SortingParameters { get; } 
+            = new Dictionary<string, string>()
+        {
+            { "Дата выхода", "primary_release_date" },
+            { "Название", "title" },
+            { "Выручка", "revenue" },
+            { "Популярность", "popularity" },
+            { "Рейтинг", "vote_average" }
+        };
+
+        public static Dictionary<string, string> SortingOrder { get; }
+            = new Dictionary<string, string>()
+        {
+            { "Убывания", ".desc" },
+            { "Возрастания", ".asc" }
+        };
+
         readonly static ResourceManager resourceManager = new ResourceManager
             ("TMDBApi.Properties.Resources",
             typeof(ApiQueriesProcessing).Assembly);
@@ -39,10 +56,10 @@ namespace TMDBApi
             return request;
         }
 
-        async public static Task<PageWithMovies> GetPageWithMovies(int page)
+        async public static Task<PageWithMovies> GetPageWithMovies(int page, string parameters = "&sort_by=popularity.desc")
         {
-            string query = string.Format("https://api.themoviedb.org/3/discover/movie?language=en&page={0}&sort_by=popularity.desc&api_key={1}",
-                page, resourceManager.GetString("ApiKey"));
+            string query = string.Format("https://api.themoviedb.org/3/discover/movie?language=en&page={0}{1}&api_key={2}",
+                page, parameters, resourceManager.GetString("ApiKey"));
             var client = new HttpClient();
             var request = FormRequest(query);
             PageWithMovies? pageWithMovies;

@@ -41,11 +41,21 @@
                         <RadioButton Foreground="#FFC047" Content="Сортировка"
                                  Style="{StaticResource NavigationButton}"
                                  Template="{StaticResource SortButtonTemplate}"
-                                 Click="SortChosen"/>
+                                 Click="SortChosen" x:Name="sortingButton"/>
+                        <Popup  IsOpen="{Binding OpenSortingPopup}"
+                                PlacementTarget="{Binding ElementName=sortingButton}"
+                                Placement="Right">
+                            <ContentControl Content="{Binding sortingPopup}"/>
+                        </Popup>
                         <RadioButton Foreground="#4ADAEC" Content="Фильтрация"
-                                 Style="{StaticResource NavigationButton}"
-                                 Template="{StaticResource FilterButtonTemplate}"
-                                 Click="FilterChosen"/>
+                                Style="{StaticResource NavigationButton}"
+                                Template="{StaticResource FilterButtonTemplate}"
+                                Click="FilterChosen" x:Name="filterButton"/>
+                        <Popup  IsOpen="{Binding OpenFilterPopup}"
+                                PlacementTarget="{Binding ElementName=filterButton}"
+                                Placement="Right">
+                                <ContentControl Content="{Binding filterPopup}"/>
+                        </Popup>
                     </StackPanel>
                 </DockPanel>
             </Border>

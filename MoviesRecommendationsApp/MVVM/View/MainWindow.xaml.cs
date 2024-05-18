@@ -16,20 +16,48 @@ using System.Windows.Shapes;
 using MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices;
 using MovieRecommendationsApp.MVVM.View.UserControls;
 using System.Security.Policy;
+using MoviesRecommendationsApp.MVVM.View.UserControls.SelectMovies;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace MovieRecommendationsApp.MVVM.View
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        public FiltersSelect filterPopup { get; set; }
+        bool _openFilterPopup;
+        public bool OpenFilterPopup
+        {
+            get => _openFilterPopup;
+            set { _openFilterPopup = value; OnPropertyChanged("OpenFilterPopup"); }
+        }
+
+        public SortingSelect sortingPopup { get; set; }
+        bool _openSortingPopup;
+        public bool OpenSortingPopup
+        {
+            get => _openSortingPopup;
+            set { _openSortingPopup = value; OnPropertyChanged("OpenSortingPopup"); }
+        }
+
         string Login { get; }
         public MainWindow(string login)
         {
             InitializeComponent();
             Login = login;
+            filterPopup = new FiltersSelect();
+            sortingPopup = new SortingSelect();
+            OpenFilterPopup = false;
+            this.DataContext = this;
+            ReloadMovies();
         }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         private void NewLogInProcessing(object sender, RoutedEventArgs e)
         {
@@ -64,12 +92,7 @@ namespace MovieRecommendationsApp.MVVM.View
             }
         }
 
-        private void HomeChosen(object sender, RoutedEventArgs e)
-        {
-            HomeUC homeUC = new HomeUC();
-            homeUC.FillMovieContainer();
-            NavigationPanelChoice.Content = homeUC;
-        }
+        private void HomeChosen(object sender, RoutedEventArgs e) => ReloadMovies();
         private void AccountChosen(object sender, RoutedEventArgs e)
         {
             NavigationPanelChoice.Content = new AccountUC();
@@ -80,11 +103,20 @@ namespace MovieRecommendationsApp.MVVM.View
         }
         private void SortChosen(object sender, RoutedEventArgs e)
         {
-            NavigationPanelChoice.Content = new SortUC();
+            OpenSortingPopup = !OpenSortingPopup;
+            if (OpenSortingPopup == false) ReloadMovies();
         }
         private void FilterChosen(object sender, RoutedEventArgs e)
         {
-            NavigationPanelChoice.Content = new HomeUC();
+            OpenFilterPopup = !OpenFilterPopup;
+            if (OpenFilterPopup == false) ReloadMovies ();
+        }
+
+        void ReloadMovies()
+        {
+            HomeUC homeUC = new HomeUC(filterPopup.GetFilterParametersString +
+                                       sortingPopup.GetSortingParametersString);
+            NavigationPanelChoice.Content = homeUC;
         }
 
         private void ChangeTheme(object sender, RoutedEventArgs e)

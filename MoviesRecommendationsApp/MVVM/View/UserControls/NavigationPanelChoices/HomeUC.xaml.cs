@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -24,6 +25,7 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices
     /// </summary>
     public partial class HomeUC : UserControl, INotifyPropertyChanged
     {
+        string _searchParameters;
         int _pagePtr = 1;
         public int PagePtr
         {
@@ -38,15 +40,20 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        public HomeUC()
+        public HomeUC(string searchParameters)
         {
             InitializeComponent();
+            _searchParameters = searchParameters;
             DataContext = this;
+            try
+            { FillMovieContainer(); }
+            catch (Exception) { NoResult(); }
         }
 
         public void FillMovieContainer()
         {
-            PageWithMovies pageWithMovies = ApiQueriesProcessing.GetPageWithMovies(PagePtr).Result;
+            PageWithMovies pageWithMovies = ApiQueriesProcessing.
+                GetPageWithMovies(PagePtr, _searchParameters).Result;
             moviesContainer.Children.Clear();
             foreach (Movie movie in pageWithMovies.Results)
             {
@@ -75,6 +82,17 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices
             if (PagePtr == 1) return;
             PagePtr--;
             FillMovieContainer();
+        }
+
+        void NoResult()
+        {
+            moviesContainer.Children.Clear();
+            Label label = new Label();
+            label.Content = "Не нашлось фильмов по данному запросу";
+            label.HorizontalAlignment = HorizontalAlignment.Center;
+            label.SetResourceReference(Label.StyleProperty, "FlatLabel");
+            label.FontSize = 40;
+            moviesContainer.Children.Add(label);
         }
     }
 }

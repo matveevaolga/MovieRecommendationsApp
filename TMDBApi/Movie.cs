@@ -14,7 +14,7 @@ namespace TMDBApi
     {
         readonly static ResourceManager resourceManager = new ResourceManager("TMDBApi.Properties.Resources",
             typeof(Movie).Assembly);
-        enum Genres
+        public enum Genres
         {
             Action = 28,
             Adventure = 12,

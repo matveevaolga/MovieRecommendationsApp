@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="MoviesRecommendationsApp.MVVM.View.UserControls.SelectMovies.SortingSelect"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MoviesRecommendationsApp.MVVM.View.UserControls.SelectMovies"
+             mc:Ignorable="d" 
+             Height="300" Width="400">
+    <Border Style="{DynamicResource DetailsBorder}" CornerRadius="5">
+        <ScrollViewer Margin="20" HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Auto">
+            <DockPanel LastChildFill="True">
+                <StackPanel DockPanel.Dock="Top">
+                    <Label Style="{DynamicResource FlatLabel}" Content="Порядок"
+                       FontSize="30"/>
+                    <WrapPanel Orientation="Horizontal" Name="sortingOrder"/>
+                </StackPanel>
+                <Label Style="{DynamicResource FlatLabel}" Content="Сортировка по"
+                   DockPanel.Dock="Top" FontSize="30"/>
+                <WrapPanel Orientation="Horizontal" Name="sortingOptions"/>
+            </DockPanel>
+        </ScrollViewer>
+    </Border>
+</UserControl>

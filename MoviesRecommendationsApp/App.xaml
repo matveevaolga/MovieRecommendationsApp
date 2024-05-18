@@ -148,6 +148,20 @@
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="BorderBrush" Value="Transparent"/>
             </Style>
+            <Style TargetType="CheckBox" x:Key="CheckBoxStyle"
+                    BasedOn="{StaticResource MaterialDesignFilterChipCheckBox}">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                            <GradientStop Color="#3a0852" Offset="0"/>
+                            <GradientStop Color="#63184f" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
