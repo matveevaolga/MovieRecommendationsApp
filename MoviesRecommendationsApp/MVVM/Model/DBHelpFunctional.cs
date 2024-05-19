@@ -56,5 +56,26 @@ namespace MovieRecommendationsApp.MVVM.ViewModel
             JsonParsing.UpdateServerData(port, username, password);
             DBFunctions.CreateLocalDB();
         }
+
+        public static bool IsMovieInFavourites(string login, int movieId)
+        {
+            DBFunctions dBFunctions = new DBFunctions();
+            List<int> favourites = dBFunctions.GetUserPreferences(login);
+            return favourites != null && favourites.Contains(movieId);
+        }
+
+        public static void HelpAddPreference(string login, int movieId)
+        {
+            DBFunctions dBFunctions = new DBFunctions();
+            int id = dBFunctions.GetUserIdByLogin(login);
+            dBFunctions.AddPreference(id, movieId);
+        }
+
+        public static void HelpDeletePreference(string login, int movieId)
+        {
+            DBFunctions dBFunctions = new DBFunctions();
+            int id = dBFunctions.GetUserIdByLogin(login);
+            dBFunctions.DeletePreference(id, movieId);
+        }
     }
 }

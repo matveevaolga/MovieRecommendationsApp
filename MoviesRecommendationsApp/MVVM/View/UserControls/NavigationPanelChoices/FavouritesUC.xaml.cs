@@ -20,9 +20,11 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls
     /// </summary>
     public partial class FavouritesUC : UserControl
     {
-        public FavouritesUC()
+        string login_;
+        public FavouritesUC(string login = "")
         {
             InitializeComponent();
+            login_ = login;
         }
     }
 }

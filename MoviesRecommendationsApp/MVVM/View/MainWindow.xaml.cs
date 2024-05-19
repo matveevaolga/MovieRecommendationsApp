@@ -43,15 +43,14 @@ namespace MovieRecommendationsApp.MVVM.View
             set { _openSortingPopup = value; OnPropertyChanged("OpenSortingPopup"); }
         }
 
-        string Login { get; }
-        public MainWindow(string login)
+        public MainWindow(string login = "")
         {
             InitializeComponent();
-            Login = login;
             filterPopup = new FiltersSelect();
             sortingPopup = new SortingSelect();
             OpenFilterPopup = false;
             this.DataContext = this;
+            Application.Current.Resources.Add("UserLogin", login);
             ReloadMovies();
         }
 
@@ -61,7 +60,9 @@ namespace MovieRecommendationsApp.MVVM.View
 
         private void NewLogInProcessing(object sender, RoutedEventArgs e)
         {
-            DBHelpFunctional.UpdateDaysOnline(Login);
+            string login = Application.Current.Resources["UserLogin"] as String;
+            if (login != "")
+                { DBHelpFunctional.UpdateDaysOnline(login); }
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -95,11 +96,29 @@ namespace MovieRecommendationsApp.MVVM.View
         private void HomeChosen(object sender, RoutedEventArgs e) => ReloadMovies();
         private void AccountChosen(object sender, RoutedEventArgs e)
         {
-            NavigationPanelChoice.Content = new AccountUC();
+            string login = Application.Current.Resources["UserLogin"] as String;
+            if (login != "")
+            {
+                NavigationPanelChoice.Content = new AccountUC();
+            }
+            else 
+            {
+                MessageBox.Show("Авторизуйтесь, чтобы менять настройки профиля", "", MessageBoxButton.OK,
+                    MessageBoxImage.None, MessageBoxResult.None, MessageBoxOptions.DefaultDesktopOnly);
+            }
         }
         private void FavouritesChosen(object sender, RoutedEventArgs e)
         {
-            NavigationPanelChoice.Content = new FavouritesUC();
+            string login = Application.Current.Resources["UserLogin"] as String;
+            if (login != "")
+            {
+                NavigationPanelChoice.Content = new FavouritesUC();
+            }
+            else
+            {
+                MessageBox.Show("Авторизуйтесь, чтобы добавлять в избранное", "", MessageBoxButton.OK,
+                    MessageBoxImage.None, MessageBoxResult.None, MessageBoxOptions.DefaultDesktopOnly);
+            }
         }
         private void SortChosen(object sender, RoutedEventArgs e)
         {

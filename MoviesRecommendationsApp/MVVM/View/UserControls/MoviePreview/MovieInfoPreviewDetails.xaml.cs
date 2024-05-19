@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using TMDBApi;
 using System.Windows.Shapes;
+using MovieRecommendationsApp.MVVM.ViewModel;
+using System.Resources;
+using System.Reflection;
+using MovieRecommendationsApp.MVVM.Model;
 
 namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
 {
@@ -21,8 +25,11 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
     /// </summary>
     public partial class MovieInfoPreviewDetails : UserControl
     {
+        string userLogin_;
+        int movieId_;
         public MovieInfoPreviewDetails(string overview,
-            List<int> genreIds, double popularity)
+            List<int> genreIds, double popularity,
+            int movieId)
         {
             DataContext = this;
             InitializeComponent();
@@ -35,6 +42,34 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
                 label.Style = (Style)Application.Current.Resources["DarkFlatLabel"];
                 label.Content = Movie.GetGenreById(genreId);
                 movieGenres.Children.Add(label);
+            }
+            userLogin_ = Application.Current.Resources["UserLogin"] as String;
+            movieId_ = movieId;
+            if (DBHelpFunctional.IsMovieInFavourites(userLogin_, movieId_))
+            {
+                favouritesButton.Style = Application.Current.Resources["FavouritesButtonAdded"] as Style;
+            }
+        }
+
+        private void AddToFavourites(object sender, RoutedEventArgs e)
+        {
+            if (userLogin_ != "")
+            {
+                if (!DBHelpFunctional.IsMovieInFavourites(userLogin_, movieId_))
+                {
+                    DBHelpFunctional.HelpAddPreference(userLogin_, movieId_);
+                    favouritesButton.Style = Application.Current.Resources["FavouritesButtonAdded"] as Style;
+                }
+                else
+                {
+                    DBHelpFunctional.HelpDeletePreference(userLogin_, movieId_);
+                    favouritesButton.Style = Application.Current.Resources["FavouritesButtonNotAdded"] as Style;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Авторизуйтесь, чтобы добавлять в избранное", "", MessageBoxButton.OK,
+                    MessageBoxImage.None, MessageBoxResult.None, MessageBoxOptions.DefaultDesktopOnly);
             }
         }
     }

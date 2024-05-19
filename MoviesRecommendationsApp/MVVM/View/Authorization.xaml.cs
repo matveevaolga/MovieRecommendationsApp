@@ -88,7 +88,7 @@ namespace MovieRecommendationsApp
             this.Close();
         }
 
-        private void OpenMainWindow(string login)
+        private void OpenMainWindow(string login = "")
         {
             MainWindow mainWindow = new MainWindow(login);
             mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -117,5 +117,8 @@ namespace MovieRecommendationsApp
 
         private void MinimizeWindow(object sender, RoutedEventArgs e) =>
             WindowState = WindowState.Minimized;
+
+        private void LogInAsGuest(object sender, RoutedEventArgs e) =>
+            OpenMainWindow();
     }
 }

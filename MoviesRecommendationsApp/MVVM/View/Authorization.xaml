@@ -45,12 +45,18 @@
                         Click="OpenRegistrationWindow" Template="{DynamicResource ButtonTemplate}"/>
                     <Button Content="Войти" Grid.Column="1" Margin="10"
                         Style="{DynamicResource ButtonStyle}" Click="LogIn"
-                        Template="{DynamicResource ButtonTemplate}"/>
+                        Template="{DynamicResource ButtonTemplate}" x:Name="logInButton"/>
                     <Button Content="Забыли пароль?" Grid.Column="2" Margin="10"
                         Style="{DynamicResource ButtonStyle}" Click="OpenRestorePasswordWindow"
                         Template="{DynamicResource ButtonTemplate}"/>
                 </Grid>
+                <Button Content="Гостевой режим" Margin="10"
+                        Template="{StaticResource GrayButtonTemplate}"
+                        Style="{StaticResource GrayButtonStyle}"
+                        Width="{Binding ElementName=logInButton, Path=ActualWidth}"
+                        Click="LogInAsGuest"/>
             </StackPanel>
         </Grid>
     </Border>
 </Window>
+

@@ -1,15 +1,6 @@
-﻿using Microsoft.Win32;
-using MySql.Data.MySqlClient;
-using Mysqlx.Crud;
-using System;
-using System.Collections.Generic;
+﻿using MySql.Data.MySqlClient;
 using System.Data;
 using System.IO;
-using System.Linq;
-using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace MovieRecommendationsApp.MVVM.Model
 {
@@ -17,14 +8,11 @@ namespace MovieRecommendationsApp.MVVM.Model
     {
         DBConnection connectorToDb;
         MySqlDataAdapter cursor;
-        ResourceManager rm;
 
         public DBFunctions()
         {
             connectorToDb = new DBConnection();
             cursor = new MySqlDataAdapter();
-            rm = new ResourceManager("FormProject.Properties.Resources",
-                typeof(DBFunctions).Assembly);
         }
 
         public static void CreateLocalDB()
@@ -111,6 +99,56 @@ namespace MovieRecommendationsApp.MVVM.Model
             register.Parameters.AddWithValue("@uProfileId", profileId);
             register.ExecuteNonQuery();
             connectorToDb.CloseConnection();
+        }
+
+        public int GetUserIdByLogin(string login)
+        {
+            connectorToDb.OpenConnection();
+            string getUserId = "select idUser from users where login = @uLogin limit 1;";
+            MySqlCommand register = new MySqlCommand(getUserId, connectorToDb.GetConnection());
+            register.Parameters.AddWithValue("@uLogin", login);
+            int id = (int)register.ExecuteScalar();
+            connectorToDb.CloseConnection();
+            return id;
+        }
+
+        public void AddPreference(int userId, int movieId)
+        {
+            connectorToDb.OpenConnection();
+            string insertPreference = "insert into preferencesinfo (idUser, movieId) values" +
+                " (@userId, @idMovie);";
+            MySqlCommand register = new MySqlCommand(insertPreference, connectorToDb.GetConnection());
+            register.Parameters.AddWithValue("@userId", userId);
+            register.Parameters.AddWithValue("@idMovie", movieId);
+            register.ExecuteNonQuery();
+            connectorToDb.CloseConnection();
+        }
+
+        public void DeletePreference(int userId, int movieId)
+        {
+            connectorToDb.OpenConnection();
+            string insertPreference = "delete from preferencesinfo where idUser=@userId and movieId=@idMovie;";
+            MySqlCommand register = new MySqlCommand(insertPreference, connectorToDb.GetConnection());
+            register.Parameters.AddWithValue("@userId", userId);
+            register.Parameters.AddWithValue("@idMovie", movieId);
+            register.ExecuteNonQuery();
+            connectorToDb.CloseConnection();
+        }
+
+        public List<int> GetUserPreferences(string login)
+        {
+            connectorToDb.OpenConnection();
+            string getPreferences = "select movieId from preferencesinfo inner" +
+                                    " join users on users.idUser = preferencesinfo.idUser" +
+                                    " where users.login = @uLogin;";
+            MySqlCommand register = new MySqlCommand(getPreferences, connectorToDb.GetConnection());
+            register.Parameters.AddWithValue("@uLogin", login);
+            List<int> preferences = new List<int>();
+            MySqlDataReader dr = register.ExecuteReader();
+            while (dr.Read())
+            { preferences.Add(dr.GetInt32(0)); }
+            connectorToDb.CloseConnection();
+            return preferences;
         }
 
         public void UpdateDaysOnline(string login)

@@ -16,9 +16,10 @@
                 <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition Height="37"></RowDefinition>
             </Grid.RowDefinitions>
-            <Button Style="{StaticResource FavouritesButton}" Grid.Row="0"
-                    Template="{StaticResource FavouritesButtonTemplate}"
-                    HorizontalAlignment="Right" Height="35" Width="35"/>
+            <Button Style="{StaticResource FavouritesButtonNotAdded}" Grid.Row="0"
+                    Template="{StaticResource FavouritesButtonNotAddedTemplate}"
+                    HorizontalAlignment="Right" Height="35" Width="35"
+                    x:Name="favouritesButton" Click="AddToFavourites"/>
             <Label Style="{DynamicResource FlatLabel}" Content="Описание" Grid.Row="1"
                    FontSize="23"/>
             <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Hidden">

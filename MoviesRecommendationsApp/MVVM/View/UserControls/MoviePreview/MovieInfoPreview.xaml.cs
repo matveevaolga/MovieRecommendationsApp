@@ -38,7 +38,7 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
             { openPopup = value; OnPropertyChanged("OpenPopup"); }
         }
         public BitmapImage MovieImage { get; init; }
-        public MovieInfoPreview(object caller, Movie movie)
+        public MovieInfoPreview(object caller, Movie movie, string userLogin = "")
         {
             this.caller = (HomeUC)caller;
             InitializeComponent();
@@ -48,7 +48,7 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
             voteAverage.Content = Math.Round(movie.VoteAverage, 2);
             releaseDate.Content = movie.ReleaseDate;
             tipPopup = new MovieInfoPreviewDetails(movie.Overview,
-                movie.GenreIds, movie.Popularity);
+                       movie.GenreIds, movie.Popularity, movie.Id);
             MovieImage = new BitmapImage(movie.GetPosterUri());
             this.movie = movie;
         }
