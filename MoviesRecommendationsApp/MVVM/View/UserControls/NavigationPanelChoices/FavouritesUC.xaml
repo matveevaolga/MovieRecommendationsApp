@@ -4,9 +4,33 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MovieRecommendationsApp.MVVM.View.UserControls.NavigationPanelChoices"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="620" d:DesignWidth="1150">
+    <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+        <WrapPanel Orientation="Vertical" Grid.Row="2" Margin="40 20">
+            <WrapPanel Orientation="Horizontal"
+           x:Name="favouritesContainer">
+            </WrapPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Template="{DynamicResource PointerButtonTemplate}" 
+            Background="Transparent" BorderBrush="Transparent"
+            Height="50" Width="100" Name="prevPage" Click="ToPrevPage">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="180" CenterY="{Binding ElementName=prevPage, Path=ActualHeight,
+                                               Converter={StaticResource Math}, ConverterParameter=x/2}"
+                                     CenterX="{Binding ElementName=prevPage, Path=ActualWidth,
+                                               Converter={StaticResource Math}, ConverterParameter=x/2}"/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+                <Label Style="{DynamicResource FlatLabel}" FontSize="30"
+               Content="{Binding PagePtr, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Template="{DynamicResource PointerButtonTemplate}" 
+            Background="Transparent" BorderBrush="Transparent"
+            Height="50" Width="100" Name="nextPage" Click="ToNextPage"/>
+            </StackPanel>
+        </WrapPanel>
+    </ScrollViewer>
 </UserControl>

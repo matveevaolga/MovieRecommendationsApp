@@ -36,6 +36,7 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
             movieOverview.Text = overview;
             moviePopularity.Content = Math.Round(popularity, 2);
             Label label;
+            if (genreIds == null) genreIds = new List<int>();
             foreach (int genreId in genreIds) 
             {
                 label = new Label();

@@ -91,5 +91,21 @@ namespace TMDBApi
             }
             return movieDetails;
         }
+
+        async public static Task<Movie> GetMovie(int movieId)
+        {
+            string query = string.Format("https://api.themoviedb.org/3/movie/{0}?api_key={1}",
+                movieId, resourceManager.GetString("ApiKey"));
+            var client = new HttpClient();
+            var request = FormRequest(query);
+            Movie movie;
+            using (var response = await client.SendAsync(request).ConfigureAwait(false))
+            {
+                response.EnsureSuccessStatusCode();
+                var body = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                movie = JsonSerializer.Deserialize<Movie>(body, options);
+            }
+            return movie;
+        }
     }
 }

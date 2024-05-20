@@ -27,7 +27,7 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
     /// </summary>
     public partial class MovieInfoPreview : UserControl, INotifyPropertyChanged
     {
-        HomeUC caller;
+        UserControl caller;
         Movie movie;
         public MovieInfoPreviewDetails tipPopup { get; set; }
         bool openPopup;
@@ -40,7 +40,7 @@ namespace MovieRecommendationsApp.MVVM.View.UserControls.MoviePreview
         public BitmapImage MovieImage { get; init; }
         public MovieInfoPreview(object caller, Movie movie, string userLogin = "")
         {
-            this.caller = (HomeUC)caller;
+            this.caller = (UserControl)caller;
             InitializeComponent();
             OpenPopup = false;
             DataContext = this;

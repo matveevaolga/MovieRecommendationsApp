@@ -39,6 +39,7 @@ namespace MoviesRecommendationsApp.MVVM.View.UserControls.MovieFullInfo
         void FillGenres()
         {
             Label label;
+            if (Movie.GenreIds == null) Movie.GenreIds = new List<int>();
             foreach (int genreId in Movie.GenreIds)
             {
                 label = new Label();

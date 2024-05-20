@@ -10,8 +10,12 @@ using Google.Protobuf.WellKnownTypes;
 
 namespace TMDBApi
 {
-    public class Movie
+    public class Movie : IJsonOnDeserialized
     {
+        public class GenreClass
+        {
+            public int Id { get; init; }
+        }
         readonly static ResourceManager resourceManager = new ResourceManager("TMDBApi.Properties.Resources",
             typeof(Movie).Assembly);
         public enum Genres
@@ -38,7 +42,9 @@ namespace TMDBApi
         }
         public int Id { get; init; }
         [JsonPropertyName("genre_ids")]
-        public List<int>? GenreIds { get; init; }
+        public List<int>? GenreIds { get; set; }
+        [JsonPropertyName("genres")]
+        public List<GenreClass>? GenresAsClasses { get; init; }
         public string? Title { get; init; }
         public string? Overview { get; init; }
         [JsonPropertyName("release_date")]
@@ -70,6 +76,14 @@ namespace TMDBApi
         {
             try { var genre = (Genres)genreId; return genre.ToString(); }
             catch (KeyNotFoundException) { return "Unknown"; }
+        }
+
+        public void OnDeserialized()
+        {
+            if (GenreIds == null)
+            {
+                GenreIds = GenresAsClasses.Select(c => c.Id).ToList();
+            }
         }
     }
 }

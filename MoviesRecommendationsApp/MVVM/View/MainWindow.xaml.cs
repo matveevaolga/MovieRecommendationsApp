@@ -112,7 +112,7 @@ namespace MovieRecommendationsApp.MVVM.View
             string login = Application.Current.Resources["UserLogin"] as String;
             if (login != "")
             {
-                NavigationPanelChoice.Content = new FavouritesUC();
+                NavigationPanelChoice.Content = new FavouritesUC(login);
             }
             else
             {
